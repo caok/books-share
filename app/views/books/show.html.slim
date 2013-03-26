@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @book.name
+p
+  strong Publishing house:
+  = @book.publishing_house
+p
+  strong Pages:
+  = @book.pages
+p
+  strong Isbn:
+  = @book.ISBN
+p
+  strong Content:
+  = @book.content
+
+= link_to 'Edit', edit_book_path(@book)
+'|
+= link_to 'Back', books_path

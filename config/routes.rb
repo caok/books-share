@@ -1,4 +1,22 @@
 BooksShare::Application.routes.draw do
+  resources :resources
+
+
+  resources :translators
+
+
+  resources :authors
+
+
+  resources :relationships
+
+
+  resources :tags
+
+
+  resources :books
+
+
   root :to => 'home#index'
 
   get "home/index"

@@ -1,0 +1,19 @@
+h1 Listing translators
+
+table
+  tr
+    th Name
+    th
+    th
+    th
+
+  - @translators.each do |translator|
+    tr
+      td = translator.name
+      td = link_to 'Show', translator
+      td = link_to 'Edit', edit_translator_path(translator)
+      td = link_to 'Destroy', translator, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Translator', new_translator_path

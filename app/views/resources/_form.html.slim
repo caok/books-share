@@ -1,0 +1,12 @@
+= simple_form_for(@resource) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :book
+    = f.input :name
+    = f.input :format
+    = f.input :file_size
+    = f.input :links
+
+  .form-actions
+    = f.button :submit

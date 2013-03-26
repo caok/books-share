@@ -1,0 +1,11 @@
+= simple_form_for(@relationship) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :tag
+    = f.association :book
+    = f.association :author
+    = f.association :translator
+
+  .form-actions
+    = f.button :submit

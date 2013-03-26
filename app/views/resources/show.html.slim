@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Book:
+  = @resource.book
+p
+  strong Name:
+  = @resource.name
+p
+  strong Format:
+  = @resource.format
+p
+  strong File size:
+  = @resource.file_size
+p
+  strong Links:
+  = @resource.links
+
+= link_to 'Edit', edit_resource_path(@resource)
+'|
+= link_to 'Back', resources_path
