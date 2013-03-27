@@ -73,7 +73,6 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
-    devise-i18n (0.6.5)
     diff-lcs (1.2.1)
     erubis (2.7.0)
     eventmachine (1.0.3)
@@ -245,7 +244,6 @@ DEPENDENCIES
   client_side_validations-simple_form
   coffee-rails (~> 3.2.1)
   devise
-  devise-i18n
   factory_girl_rails
   jasmine
   jquery-rails
