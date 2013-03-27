@@ -29,14 +29,14 @@ class Book < ActiveRecord::Base
 
   # instance methods
   def tag_labels
-    tags.map(&:name).join(',')
+    tags.map(&:name).join(', ')
   end
 
   def author_labels
-    authors.map(&:name).join(',')
+    authors.map(&:name).join(' / ')
   end
 
   def translator_labels
-    translators.map(&:name).join(',')
+    translators.map(&:name).join(' / ')
   end
 end

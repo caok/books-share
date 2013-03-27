@@ -1,28 +1,47 @@
-p
-  strong Name:
-  = @book.name
-p
-  strong Name:
-  = @book.tag_labels
-p
-  strong Name:
-  = @book.author_labels
-p
-  strong Name:
-  = @book.translator_labels
-p
-  strong Publishing house:
-  = @book.publishing_house
-p
-  strong Pages:
-  = @book.pages
-p
-  strong Isbn:
-  = @book.ISBN
-p
-  strong Content:
-  = @book.content
+.row-fluid
+  .span3
+    .event-sidebar
+      .event-map
+        == @book.name
+      ul.unstyled
+        li
+          i.icon-tag
+          = @book.tag_labels
+        li
+          i.icon-tag
+          = @book.author_labels
+        -if can? :edit, @book
+          li
+            i.icon-edit
+            = link_to t('helpers.links.edit'), edit_book_path(@book)
+        -if can? :destroy, @book
+          li
+            i.icon-remove
+            = link_to t('helpers.links.destroy'), @book, method: :delete, data: { confirm: t("helpers.links.confirm") }
 
-= link_to 'Edit', edit_book_path(@book)
-'|
-= link_to 'Back', books_path
+  .span9
+    header
+      h3 = @book.name
+
+    .book-detail
+      table.table.table-striped.table-bordered
+        tbody
+          tr
+            td.span2 作者
+            td= @book.author_labels
+          tr
+            td.span2 译者
+            td= @book.translator_labels
+          tr
+            td.span2 标签
+            td= @book.tag_labels
+          tr
+            td.span2 出版社
+            td= @book.publishing_house
+          tr
+            td.span2 页数
+            td= @book.pages
+          tr
+            td.span2 ISBN
+            td= @book.ISBN
+      == @book.content

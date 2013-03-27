@@ -21,17 +21,8 @@ html lang="zh"
     = render 'common/menu'
 
     .container
-      .row
-        .span3
-          .well.sidebar-nav
-            ul.nav.nav-list
-              li.nav-header Sidebar
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
-        .span9
-          = render_flashes
-          = yield
+      = render_flashes
+      = yield
 
       hr
       footer
