@@ -29,19 +29,32 @@
           tr
             td.span2 作者
             td= @book.author_labels
-          tr
-            td.span2 译者
-            td= @book.translator_labels
+          - unless @book.translator_labels.blank?
+            tr
+              td.span2 译者
+              td= @book.translator_labels
           tr
             td.span2 标签
             td= @book.tag_labels
-          tr
-            td.span2 出版社
-            td= @book.publishing_house
-          tr
-            td.span2 页数
-            td= @book.pages
-          tr
-            td.span2 ISBN
-            td= @book.ISBN
-      == @book.content
+          - unless @book.publishing_house.blank?
+            tr
+              td.span2 出版社
+              td= @book.publishing_house
+          - unless @book.pages.blank?
+            tr
+              td.span2 页数
+              td= @book.pages
+          - unless @book.ISBN.blank?
+            tr
+              td.span2 ISBN
+              td= @book.ISBN
+
+    .book-content
+      h4 内容简介
+      == simple_format @book.content
+
+    .book-resources
+      h4 下载资源
+      - @book.resources.each do |resource|
+        = resource.name
+

@@ -8,6 +8,7 @@ class Book < ActiveRecord::Base
   has_many :tags, :through => :relationships
   has_many :authors, :through => :relationships
   has_many :translators, :through => :relationships
+  has_many :resources, :dependent => :destroy
 
   # callback functions
   before_save :separate_labels

@@ -1,4 +1,4 @@
 class Resource < ActiveRecord::Base
-  belongs_to :book
   attr_accessible :file_size, :format, :links, :name
+  belongs_to :book
 end
