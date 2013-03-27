@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
-gem 'sqlite3'
+gem 'mysql2'
 gem "slim-rails"
 gem "kaminari"
 gem "nokogiri"

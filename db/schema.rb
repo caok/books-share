@@ -11,11 +11,66 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130326134252) do
+ActiveRecord::Schema.define(:version => 20130326142952) do
+
+  create_table "authors", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "books", :force => true do |t|
+    t.string   "name"
+    t.string   "publishing_house"
+    t.integer  "pages"
+    t.string   "ISBN"
+    t.text     "content"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "book_id"
+    t.integer  "author_id"
+    t.integer  "translator_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "relationships", ["author_id"], :name => "index_relationships_on_author_id"
+  add_index "relationships", ["book_id"], :name => "index_relationships_on_book_id"
+  add_index "relationships", ["tag_id"], :name => "index_relationships_on_tag_id"
+  add_index "relationships", ["translator_id"], :name => "index_relationships_on_translator_id"
+
+  create_table "resources", :force => true do |t|
+    t.integer  "book_id"
+    t.string   "name"
+    t.string   "format"
+    t.string   "file_size"
+    t.string   "links"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "resources", ["book_id"], :name => "index_resources_on_book_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "translators", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "name"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
