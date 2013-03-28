@@ -34,3 +34,33 @@
 .book-contact {
   margin-left: $baseFontSize / 2;
 }
+
+.home {
+  text-align: center;
+
+  .thumbnail {
+    border: none;
+    box-shadow: none;
+
+    img {
+      width: 130px;
+      height: 160px;
+    }
+
+    .desc {
+      margin: 10px;
+
+      .through {
+        text-decoration: line-through;
+      }
+    }
+
+    .op {
+      opacity: 0;
+    }
+
+    &:hover .op {
+      opacity: 1;
+    }
+  }
+}

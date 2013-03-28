@@ -43,6 +43,6 @@ class Book < ActiveRecord::Base
   end
 
   def cover_url
-    attachment.attachment.url
+    attachment.try(:attachment).try(:url)
   end
 end

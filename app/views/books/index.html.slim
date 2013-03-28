@@ -1,25 +1,8 @@
-h1 Listing books
-
-table
-  tr
-    th Name
-    th Publishing house
-    th Pages
-    th Isbn
-    th
-    th
-    th
-
+ul.thumbnails
   - @books.each do |book|
-    tr
-      td = book.name
-      td = book.publishing_house
-      td = book.pages
-      td = book.ISBN
-      td = link_to 'Show', book
-      td = link_to 'Edit', edit_book_path(book)
-      td = link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete
-
-br
-
-= link_to 'New Book', new_book_path
+    li.span2.home
+      .thumbnail
+        a{href="#{book_path(book)}"}
+          = image_tag(book.cover_url)
+        .desc
+          = strip_tags(book.name).truncate(28, omission: '')
