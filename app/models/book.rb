@@ -1,7 +1,7 @@
 class Book < ActiveRecord::Base
   # attributes
-  attr_accessible :ISBN, :content, :name, :pages, :publishing_house, :tag, :author, :translator
-  attr_accessor :tag, :author, :translator
+  attr_accessible :ISBN, :content, :name, :pages, :publishing_house, :tag, :author, :translator, :cover
+  attr_accessor :tag, :author, :translator, :cover
 
   # assocation
   has_many :relationships
@@ -9,6 +9,7 @@ class Book < ActiveRecord::Base
   has_many :authors, :through => :relationships
   has_many :translators, :through => :relationships
   has_many :resources, :dependent => :destroy
+  has_one :attachment, :as => :attachmenttable, :dependent => :destroy
 
   # callback functions
   before_save :separate_labels
@@ -39,5 +40,9 @@ class Book < ActiveRecord::Base
 
   def translator_labels
     translators.map(&:name).join(' / ')
+  end
+
+  def cover_url
+    attachment.attachment.url
   end
 end

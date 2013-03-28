@@ -1,0 +1,36 @@
+.book {
+  header {
+    border-bottom: 1px solid $grayBackground;
+  }
+  h1 {
+    font-size: $baseFontSize * 2.25;
+  }
+  h2 {
+    font-size: $baseFontSize * 1.25;
+    color: $gray;
+  }
+}
+
+.book-body {
+  margin-top: $baseLineHeight;
+}
+
+.book-sidebar {
+  margin: $baseLineHeight / 2;
+  background-color: $grayLighter;
+  padding: $baseLineHeight;
+  > ul {
+    margin-bottom: $baseLineHeight / 2;
+    > li {
+      margin-top: $baseLineHeight / 2;
+    }
+  }
+}
+
+.book-map img {
+  border: 1px solid darken($grayLighter, 15%);
+}
+
+.book-contact {
+  margin-left: $baseFontSize / 2;
+}

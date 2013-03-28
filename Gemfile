@@ -12,6 +12,9 @@ gem "devise"
 gem "cancan"
 gem "rails-i18n"
 gem 'jquery-rails'
+# attachment
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

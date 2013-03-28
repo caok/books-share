@@ -1,5 +1,6 @@
-= simple_form_for @book, :html => { :class => "form-horizontal" }, :validate => true do |f|
+= simple_form_for @book, :html => { :class => "form-horizontal", :multipart => true }, :validate => true do |f|
   .form-inputs
+    = f.input :cover, :as => :file
     = f.input :name
     = f.input :tag
     = f.input :author
@@ -11,4 +12,5 @@
 
   .form-actions
     = f.button :submit, :class => ['btn', 'btn-info']
+    '
     = link_to t("helpers.links.cancel"), books_path, :class => 'btn'

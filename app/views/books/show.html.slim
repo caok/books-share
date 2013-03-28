@@ -1,15 +1,14 @@
-.row-fluid
+.row-fluid.book
   .span3
-    .event-sidebar
-      .event-map
-        == @book.name
+    .book-sidebar
+      .book-map
+        == image_tag(@book.cover_url)
       ul.unstyled
         li
-          i.icon-tag
-          = @book.tag_labels
-        li
-          i.icon-tag
-          = @book.author_labels
+          - @book.tags.each do |tag|
+            '
+            i.icon-tag
+            = tag.name
         -if can? :edit, @book
           li
             i.icon-edit
@@ -17,11 +16,11 @@
         -if can? :destroy, @book
           li
             i.icon-remove
-            = link_to t('helpers.links.destroy'), @book, method: :delete, data: { confirm: t("helpers.links.confirm") }
+            = link_to t('helpers.links.destroy'), @book, method: :delete, data: { confirm: t('helpers.links.confirm') }
 
   .span9
     header
-      h3 = @book.name
+      h1 = @book.name
 
     .book-detail
       table.table.table-striped.table-bordered
@@ -50,11 +49,11 @@
               td= @book.ISBN
 
     .book-content
-      h4 内容简介
+      h2 内容简介
       == simple_format @book.content
 
     .book-resources
-      h4 下载资源
+      h2 下载资源
       - @book.resources.each do |resource|
         = resource.name
 

@@ -44,6 +44,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
+        Attachment.create(:attachment => params[:book][:cover], :attachmenttable => @book) if params[:book][:cover]
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
         format.json { render json: @book, status: :created, location: @book }
       else
@@ -60,6 +61,10 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.update_attributes(params[:book])
+        if params[:book][:cover]
+          @book.attachment.destroy if @book.attachment
+          Attachment.create(:attachment => params[:book][:cover], :attachmenttable => @book)
+        end
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
         format.json { head :no_content }
       else

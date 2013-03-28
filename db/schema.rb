@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130326142952) do
+ActiveRecord::Schema.define(:version => 20130328125206) do
+
+  create_table "attachments", :force => true do |t|
+    t.string  "attachmenttable_type"
+    t.integer "attachmenttable_id"
+    t.string  "attachment"
+  end
 
   create_table "authors", :force => true do |t|
     t.string   "name"
