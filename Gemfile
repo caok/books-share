@@ -10,7 +10,6 @@ gem "client_side_validations"
 gem "client_side_validations-simple_form"
 gem "devise"
 gem "cancan"
-gem "rails-i18n"
 gem 'jquery-rails'
 # attachment
 gem 'carrierwave'

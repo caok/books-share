@@ -9,14 +9,14 @@
             '
             i.icon-tag
             = tag.name
-        -if can? :edit, @book
-          li
-            i.icon-edit
-            = link_to t('helpers.links.edit'), edit_book_path(@book)
-        -if can? :destroy, @book
-          li
-            i.icon-remove
-            = link_to t('helpers.links.destroy'), @book, method: :delete, data: { confirm: t('helpers.links.confirm') }
+        /*-if can? :edit, @book*/
+        li
+          i.icon-edit
+          = link_to t('helpers.links.edit'), edit_book_path(@book)
+        /*-if can? :destroy, @book*/
+        li
+          i.icon-remove
+          = link_to t('helpers.links.destroy'), @book, method: :delete, data: { confirm: t('helpers.links.confirm') }
 
   .span9
     header
@@ -26,22 +26,22 @@
       table.table.table-striped.table-bordered
         tbody
           tr
-            td.span2 作者
+            td.span2= t('activerecord.attributes.book.author')
             td= @book.author_labels
           - unless @book.translator_labels.blank?
             tr
-              td.span2 译者
+              td.span2= t('activerecord.attributes.book.translator')
               td= @book.translator_labels
           tr
-            td.span2 标签
+            td.span2= t('activerecord.attributes.book.tag')
             td= @book.tag_labels
           - unless @book.publishing_house.blank?
             tr
-              td.span2 出版社
+              td.span2= t('activerecord.attributes.book.publishing_house')
               td= @book.publishing_house
           - unless @book.pages.blank?
             tr
-              td.span2 页数
+              td.span2= t('activerecord.attributes.book.pages')
               td= @book.pages
           - unless @book.ISBN.blank?
             tr
@@ -49,11 +49,11 @@
               td= @book.ISBN
 
     .book-content
-      h2 内容简介
+      h2= t('activerecord.attributes.book.content')
       == simple_format @book.content
 
     .book-resources
-      h2 下载资源
+      h2= t('activerecord.attributes.book.resources')
       - @book.resources.each do |resource|
         = resource.name
 

@@ -6,8 +6,8 @@ ul.nav.pills.pull-right
         span.caret
 
       ul.dropdown-menu
-        li= link_to t('layout.logout'), destroy_user_session_path, method: :delete
+        li= link_to t('labels.logout'), destroy_user_session_path, method: :delete
 
   - else
-    li= link_to t('layout.signup'), new_user_registration_path
-    li= link_to t('layout.login'), new_user_session_path
+    li= link_to t('labels.sign_up'), new_user_registration_path
+    li= link_to t('labels.sign_in'), new_user_session_path
