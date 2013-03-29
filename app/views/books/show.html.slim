@@ -51,7 +51,7 @@
     .book-resources
       .masthead
         ul.nav.nav-pills.pull-right
-          li= link_to t("helpers.links.add_resource"), new_resource_path
+          li= link_to t("helpers.links.add_resource"), new_resource_path(:book_id => @book)
         h2.muted= t('activerecord.attributes.book.resources')
       - @book.resources.each do |resource|
         = resource.name

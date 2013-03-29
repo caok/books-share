@@ -24,7 +24,7 @@ class ResourcesController < ApplicationController
   # GET /resources/new
   # GET /resources/new.json
   def new
-    @resource = Resource.new
+    @resource = Resource.new(:book_id => params[:book_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +44,7 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       if @resource.save
-        format.html { redirect_to @resource, notice: I18n.t("flash.actions.create.notice") }
+        format.html { redirect_to @resource.book, notice: I18n.t("flash.actions.create.notice") }
         format.json { render json: @resource, status: :created, location: @resource }
       else
         format.html { render action: "new" }

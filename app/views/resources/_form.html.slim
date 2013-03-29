@@ -1,6 +1,7 @@
 = simple_form_for @resource, :html => { :class => "form-horizontal", :multipart => true }, :validate => true do |f|
   .form-inputs
-    = f.association :book
+    = f.association :book, :collection => [@resource.book], :input_html => {:disabled => true}
+    = f.hidden_field :book_id
     = f.input :name
     = f.input :format
     = f.input :file_size
