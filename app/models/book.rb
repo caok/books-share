@@ -11,6 +11,9 @@ class Book < ActiveRecord::Base
   has_many :resources, :dependent => :destroy
   has_one :attachment, :as => :attachmenttable, :dependent => :destroy
 
+  # validation
+  validates :name, :content, :presence => true
+
   # callback functions
   before_save :separate_labels
   def separate_labels

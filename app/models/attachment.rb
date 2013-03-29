@@ -3,8 +3,9 @@ class Attachment < ActiveRecord::Base
 
   mount_uploader :attachment, AttachmentUploader
 
+  # assocation
   belongs_to :attachmenttable, :polymorphic => true
 
-  validates :attachmenttable, :presence => true
-  validates :attachment, :presence => true
+  # validation
+  validates :attachment, :attachmenttable, :presence => true
 end
