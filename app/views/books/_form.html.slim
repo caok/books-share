@@ -8,7 +8,7 @@
     = f.input :publishing_house
     = f.input :pages
     = f.input :ISBN
-    = f.input :content
+    = f.input :content, :input_html => {:rows => 12, :class => 'span6'}
 
   .form-actions
     = f.button :submit, :class => ['btn', 'btn-info']

@@ -6,6 +6,7 @@ zh-CN:
       tag: "标签"
       author: "作者"
       translator: "译者"
+      resource: "资源"
     attributes:
       user:
         name: "姓名"
@@ -29,3 +30,9 @@ zh-CN:
         ISBN: "ISBN"
         content: "内容简介"
         resources: "下载资源"
+      resource:
+        book: "书籍"
+        name: "名称"
+        format: "格式"
+        file_size: "大小"
+        links: "链接"

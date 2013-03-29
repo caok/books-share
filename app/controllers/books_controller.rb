@@ -45,7 +45,7 @@ class BooksController < ApplicationController
     respond_to do |format|
       if @book.save
         Attachment.create(:attachment => params[:book][:cover], :attachmenttable => @book) if params[:book][:cover]
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
+        format.html { redirect_to @book, notice: I18n.t("flash.actions.create.notice") }
         format.json { render json: @book, status: :created, location: @book }
       else
         format.html { render action: "new" }
@@ -65,7 +65,7 @@ class BooksController < ApplicationController
           @book.attachment.destroy if @book.attachment
           Attachment.create(:attachment => params[:book][:cover], :attachmenttable => @book)
         end
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
+        format.html { redirect_to @book, notice: I18n.t("flash.actions.update.notice") }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

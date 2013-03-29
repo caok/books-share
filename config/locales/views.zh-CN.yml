@@ -30,7 +30,7 @@ zh-CN:
       all: "所有"
       more: "更多..."
       grant_permission: "授予权限"
-      users: "人员管理"
+      add_resource: "追加资源"
 
   users:
     show:

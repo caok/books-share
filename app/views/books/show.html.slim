@@ -53,7 +53,9 @@
       == simple_format @book.content
 
     .book-resources
-      h2= t('activerecord.attributes.book.resources')
+      .masthead
+        ul.nav.nav-pills.pull-right
+          li= link_to t("helpers.links.add_resource"), new_resource_path
+        h2.muted= t('activerecord.attributes.book.resources')
       - @book.resources.each do |resource|
         = resource.name
-

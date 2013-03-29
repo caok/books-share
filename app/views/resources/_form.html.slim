@@ -1,6 +1,4 @@
-= simple_form_for(@resource) do |f|
-  = f.error_notification
-
+= simple_form_for @resource, :html => { :class => "form-horizontal", :multipart => true }, :validate => true do |f|
   .form-inputs
     = f.association :book
     = f.input :name
@@ -9,4 +7,6 @@
     = f.input :links
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, :class => ['btn', 'btn-info']
+    '
+    = link_to t("helpers.links.cancel"), books_path, :class => 'btn'
