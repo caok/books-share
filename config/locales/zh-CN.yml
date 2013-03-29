@@ -1,0 +1,28 @@
+zh-CN:
+  site_name: "Book Shelf"
+  date:
+    weekstart: '1'
+    formats:
+      datepicker: 'yyyy-mm-dd'
+      stamp: '%b%d日(%a)'
+      stamp_with_year: '%Y年%b%d日(%a)'
+
+  views:
+    pagination:
+      previous: "前一页"
+      next: "后一页"
+      first: "首页"
+      last: "末页"
+      truncate: "..."
+
+  layout:
+    holder: "Caok"
+    contact_us: "联系我们"
+    opensource: "开源社区"
+
+  labels:
+    sign_in: "登录"
+    sign_up: "注册"
+    logout: "退出"
+    cancel: "取消"
+    close: "关闭"
