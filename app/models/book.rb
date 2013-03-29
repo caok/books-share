@@ -30,18 +30,6 @@ class Book < ActiveRecord::Base
   private :separate_labels
 
   # instance methods
-  def tag_labels
-    tags.map(&:name).join(', ')
-  end
-
-  def author_labels
-    authors.map(&:name).join(' / ')
-  end
-
-  def translator_labels
-    translators.map(&:name).join(' / ')
-  end
-
   def cover_url
     attachment.try(:attachment).try(:url)
   end

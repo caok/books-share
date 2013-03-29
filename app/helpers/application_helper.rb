@@ -28,4 +28,22 @@ module ApplicationHelper
       render 'common/flashes'
     end
   end
+
+  # http://twitter.github.com/bootstrap/components.html#labels-badges
+  def format_labels(labels, color = '')
+    label_color = color.empty? ? "label" : "label label-#{color}"
+    html = ''
+    labels.each do |label|
+      html += content_tag(:span, label.name, :class => label_color) + ' '
+    end
+    html.html_safe
+  end
+
+  def format_tags(tags)
+    html = ''
+    tags.each do |tag|
+      html += content_tag(:i, '', :class => 'icon-tag') + tag.name + ' '
+    end
+    html.html_safe
+  end
 end

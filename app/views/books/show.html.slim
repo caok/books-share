@@ -4,11 +4,7 @@
       .book-map
         == image_tag(@book.cover_url)
       ul.unstyled
-        li
-          - @book.tags.each do |tag|
-            '
-            i.icon-tag
-            = tag.name
+        li= format_tags @book.tags
         /*-if can? :edit, @book*/
         li
           i.icon-edit
@@ -27,14 +23,14 @@
         tbody
           tr
             td.span2= t('activerecord.attributes.book.author')
-            td= @book.author_labels
-          - unless @book.translator_labels.blank?
+            td= format_labels @book.authors, "info"
+          - unless @book.translators.blank?
             tr
               td.span2= t('activerecord.attributes.book.translator')
-              td= @book.translator_labels
+              td= format_labels @book.translators
           tr
             td.span2= t('activerecord.attributes.book.tag')
-            td= @book.tag_labels
+            td= format_labels @book.tags, "important"
           - unless @book.publishing_house.blank?
             tr
               td.span2= t('activerecord.attributes.book.publishing_house')
