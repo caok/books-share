@@ -1,17 +1,16 @@
 .navbar.navbar-inverse.navbar-static-top
   .navbar-inner
     .container
-      /*a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"*/
-        /*span.icon-bar*/
-        /*span.icon-bar*/
-        /*span.icon-bar*/
+      a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
 
       -if !mobile?
         = link_to t('site_name', default: 'site'), root_path, class: 'brand'
         = render 'common/search_form'
       .collapse.nav-collapse
-        = render 'common/user_nav'
         ul.nav
           li= link_to "books", books_path
           li= link_to "tags", tags_path
-
+        = render 'common/user_nav'

@@ -59,4 +59,7 @@
           - @book.resources.each do |resource|
             tr
               td= resource.name
-              td= resource.links
+              td
+                b= resource.format
+              td= resource.file_size
+              td= link_to t("helpers.links.hyperlink"), resource.links, class: "btn btn-mini btn-success", target: "_blank"
