@@ -29,7 +29,7 @@ zh-CN:
         pages: "页数"
         ISBN: "ISBN"
         content: "内容简介"
-        resources: "下载资源"
+        resources: "资源"
       resource:
         book: "书籍"
         name: "名称"

@@ -1,6 +1,6 @@
 ul.thumbnails
   - @books.each do |book|
-    li.span2.home
+    li.home
       .thumbnail
         a{href="#{book_path(book)}"}
           = image_tag(book.cover_url)

@@ -1,3 +1,4 @@
+- model_class = Book
 .row-fluid.book
   .span3
     .book-sidebar
@@ -22,36 +23,40 @@
       table.table.table-striped.table-bordered
         tbody
           tr
-            td.span2= t('activerecord.attributes.book.author')
+            td.span2= model_class.human_attribute_name(:author)
             td= format_labels @book.authors, "info"
           - unless @book.translators.blank?
             tr
-              td.span2= t('activerecord.attributes.book.translator')
+              td.span2= model_class.human_attribute_name(:translator)
               td= format_labels @book.translators
           tr
-            td.span2= t('activerecord.attributes.book.tag')
+            td.span2= model_class.human_attribute_name(:tag)
             td= format_labels @book.tags, "important"
           - unless @book.publishing_house.blank?
             tr
-              td.span2= t('activerecord.attributes.book.publishing_house')
+              td.span2= model_class.human_attribute_name(:publishing_house)
               td= @book.publishing_house
           - unless @book.pages.blank?
             tr
-              td.span2= t('activerecord.attributes.book.pages')
+              td.span2= model_class.human_attribute_name(:pages)
               td= @book.pages
           - unless @book.ISBN.blank?
             tr
-              td.span2 ISBN
+              td.span2= model_class.human_attribute_name(:ISBN)
               td= @book.ISBN
 
     .book-content
-      h2= t('activerecord.attributes.book.content')
+      h2= model_class.human_attribute_name(:content)
       == simple_format @book.content
 
     .book-resources
       .masthead
         ul.nav.nav-pills.pull-right
           li= link_to t("helpers.links.add_resource"), new_resource_path(:book_id => @book)
-        h2.muted= t('activerecord.attributes.book.resources')
-      - @book.resources.each do |resource|
-        = resource.name
+        h2.muted= model_class.human_attribute_name(:resources)
+      table.table.table-striped
+        tbody
+          - @book.resources.each do |resource|
+            tr
+              td= resource.name
+              td= resource.links
