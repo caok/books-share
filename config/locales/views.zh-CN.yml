@@ -40,3 +40,6 @@ zh-CN:
       title: "人员管理"
     set_roles:
       title: "权限授予"
+  tags:
+    index:
+      title: "分类"

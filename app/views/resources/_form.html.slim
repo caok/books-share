@@ -1,13 +1,16 @@
-= simple_form_for @resource, :html => { :class => "form-horizontal", :multipart => true }, :validate => true do |f|
-  .form-inputs
-    = f.association :book, :collection => [@resource.book], :input_html => {:disabled => true}
-    = f.hidden_field :book_id
-    = f.input :name
-    = f.input :format
-    = f.input :file_size
-    = f.input :links
+.well
+  fieldset
+    legend= t 'labels.resource'
+    = simple_form_for @resource, :html => { :class => "form-horizontal", :multipart => true }, :validate => true do |f|
+      .form-inputs
+        = f.association :book, :collection => [@resource.book], :input_html => {:disabled => true}
+        = f.hidden_field :book_id
+        = f.input :name
+        = f.input :format
+        = f.input :file_size
+        = f.input :links
 
-  .form-actions
-    = f.button :submit, :class => ['btn', 'btn-info']
-    '
-    = link_to t("helpers.links.cancel"), books_path, :class => 'btn'
+      .form-actions
+        = f.button :submit, :class => ['btn', 'btn-info']
+        '
+        = link_to t("helpers.links.cancel"), books_path, :class => 'btn'
