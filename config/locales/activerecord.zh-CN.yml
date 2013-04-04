@@ -3,9 +3,6 @@ zh-CN:
     models:
       user: "用户"
       book: "书籍"
-      tag: "标签"
-      author: "作者"
-      translator: "译者"
       resource: "资源"
     attributes:
       user:
@@ -25,6 +22,9 @@ zh-CN:
         tag: "标签"
         author: "作者"
         translator: "译者"
+        tag_list: "标签"
+        author_list: "作者"
+        translator_list: "译者"
         publishing_house: "出版社"
         pages: "页数"
         ISBN: "ISBN"

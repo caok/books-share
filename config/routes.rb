@@ -8,6 +8,8 @@ BooksShare::Application.routes.draw do
   get "home/index"
 
   get 'tags/:tag', to: 'books#index', as: :tag
+  get 'authors/:author', to: 'books#index', as: :author
+  get 'translators/:translator', to: 'books#index', as: :translator
 
   match "/search" => "search#index", :as => :search
 

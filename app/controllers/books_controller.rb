@@ -2,8 +2,13 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    if params[:tag]
-      @books = Book.tagged_with(params[:tag])
+    case
+    when params[:tag]
+      @books = Book.tagged_with(params[:tag], :on => :tags, :any => true)
+    when params[:author]
+      @books = Book.tagged_with(params[:author], :on => :authors, :any => true)
+    when params[:translator]
+      @books = Book.tagged_with(params[:translator], :on => :translators, :any => true)
     else
       @books = Book.all
     end

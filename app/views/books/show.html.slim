@@ -25,14 +25,14 @@
         tbody
           tr
             td.span2= model_class.human_attribute_name(:author)
-            td= format_labels @book.author_list, "info"
+            td= format_labels @book.author_list, "info", "author"
           - unless @book.translators.blank?
             tr
               td.span2= model_class.human_attribute_name(:translator)
-              td= format_labels @book.translator_list
+              td= format_labels @book.translator_list, '', "translator"
           tr
             td.span2= model_class.human_attribute_name(:tag)
-            td= format_labels @book.tag_list, "important"
+            td= format_labels @book.tag_list, "important", "tag"
           - unless @book.publishing_house.blank?
             tr
               td.span2= model_class.human_attribute_name(:publishing_house)

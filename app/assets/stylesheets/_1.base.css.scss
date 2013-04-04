@@ -20,6 +20,11 @@
   //background-color: $grayLighter;
   //border: 1px solid #ddd;
   padding: $baseLineHeight;
+
+  .book-cover img {
+    border: 1px solid darken($grayLighter, 15%);
+  }
+
   > ul {
     margin-bottom: $baseLineHeight / 2;
     > li {
@@ -32,8 +37,17 @@
   }
 }
 
-.book-cover img {
-  border: 1px solid darken($grayLighter, 15%);
+.book-detail {
+  span.label {
+    margin-right: 5px;
+    > a {
+      text-decoration: none;
+      color: white;
+    }
+    &:hover a {
+      color: black;
+    }
+  }
 }
 
 .tag-list {
