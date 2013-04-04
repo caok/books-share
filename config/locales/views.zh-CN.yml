@@ -17,6 +17,8 @@ zh-CN:
 
   helpers:
     actions: "操作"
+    hints:
+      tag: "用逗号分开，不超过3个"
     links:
       confirm: "您确定吗？"
       new: "新建"

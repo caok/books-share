@@ -5,7 +5,7 @@
       .form-inputs
         = f.input :cover, :as => :file
         = f.input :name
-        = f.input :tag
+        = f.input :tag, :hint => t('helpers.hints.tag')
         = f.input :author
         = f.input :translator
         = f.input :publishing_house

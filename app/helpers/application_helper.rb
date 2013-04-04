@@ -35,7 +35,10 @@ module ApplicationHelper
   def format_tags(tags)
     html = ''
     tags.each do |tag|
-      html += content_tag(:i, '', :class => 'icon-tag') + tag.name + ' '
+      #html += content_tag(:i, '', :class => 'icon-tag') + tag.name + ' '
+      html += content_tag :span, :class => 'tag' do
+        content_tag(:i, '', :class => 'icon-tag') + content_tag(:span, tag.name)
+      end
     end
     html.html_safe
   end

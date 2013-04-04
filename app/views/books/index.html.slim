@@ -1,8 +1,8 @@
 ul.thumbnails
   - @books.each do |book|
-    li.home
+    li.home.span2
       .thumbnail
         a{href="#{book_path(book)}"}
           = image_tag(book.cover_url)
         .desc
-          = strip_tags(book.name).truncate(28, omission: '')
+          = strip_tags(book.name).truncate(15, omission: '...')

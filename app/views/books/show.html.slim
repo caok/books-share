@@ -2,7 +2,7 @@
 .row-fluid.book
   .span3
     .book-sidebar
-      .book-map
+      .book-cover
         == image_tag(@book.cover_url)
       ul.unstyled
         li= format_tags @book.tags
@@ -47,7 +47,8 @@
 
     .book-content
       h2= model_class.human_attribute_name(:content)
-      == simple_format @book.content
+      .well
+        = simple_format @book.content
 
     .book-resources
       .masthead

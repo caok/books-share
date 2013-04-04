@@ -17,22 +17,23 @@
 
 .book-sidebar {
   margin: $baseLineHeight / 2;
-  background-color: $grayLighter;
+  //background-color: $grayLighter;
+  //border: 1px solid #ddd;
   padding: $baseLineHeight;
   > ul {
     margin-bottom: $baseLineHeight / 2;
     > li {
       margin-top: $baseLineHeight / 2;
+      > span.tag {
+        //float: left;
+        padding: 1px 8px 1px 0px;
+      }
     }
   }
 }
 
-.book-map img {
+.book-cover img {
   border: 1px solid darken($grayLighter, 15%);
-}
-
-.book-contact {
-  margin-left: $baseFontSize / 2;
 }
 
 .home {
@@ -40,7 +41,8 @@
 
   .thumbnail {
     border: none;
-    box-shadow: none;
+    //box-shadow: none;
+    //width: 140px;
 
     img {
       width: 120px;
@@ -56,12 +58,12 @@
       }
     }
 
-    .op {
-      opacity: 0;
-    }
+    //.op {
+      //opacity: 0;
+    //}
 
-    &:hover .op {
-      opacity: 1;
-    }
+    //&:hover .op {
+      //opacity: 1;
+    //}
   }
 }

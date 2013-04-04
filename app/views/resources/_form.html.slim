@@ -5,10 +5,10 @@
       .form-inputs
         = f.association :book, :collection => [@resource.book], :input_html => {:disabled => true}
         = f.hidden_field :book_id
+        = f.input :links
         = f.input :name
         = f.input :format
         = f.input :file_size
-        = f.input :links
 
       .form-actions
         = f.button :submit, :class => ['btn', 'btn-info']
