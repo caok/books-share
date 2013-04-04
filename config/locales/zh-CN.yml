@@ -19,6 +19,7 @@ zh-CN:
     holder: "Caok"
     contact_us: "联系我们"
     opensource: "开源社区"
+    search: "搜索"
 
   labels:
     sign_in: "登录"

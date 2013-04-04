@@ -1,2 +1,5 @@
-= form_tag '/search', class: 'navbar-search' do
-  = text_field_tag 'q', @q, class: 'input-medium search-query', placeholder: @q || 'Search'
+/*= form_tag '/search', class: 'navbar-search' do*/
+  /*= text_field_tag 'q', @q, class: 'input-medium search-query', placeholder: @q || 'Search'*/
+
+form.navbar-search action="/search" method="get" target='_blank'
+  input.search-query.span3 name="q" placeholder=t("layout.search") type="text" value=(params[:q])

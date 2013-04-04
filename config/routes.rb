@@ -13,6 +13,8 @@ BooksShare::Application.routes.draw do
 
   get "home/index"
 
+  match "/search" => "search#index", :as => :search
+
   devise_for :users
 
   # The priority is based upon order of creation:
