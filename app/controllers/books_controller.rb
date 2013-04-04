@@ -2,7 +2,11 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    if params[:tag]
+      @books = Book.tagged_with(params[:tag])
+    else
+      @books = Book.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -35,9 +39,9 @@ class BooksController < ApplicationController
   # GET /books/1/edit
   def edit
     @book = Book.find(params[:id])
-    @book.tag = @book.tags.map(&:name).join(',')
-    @book.author = @book.authors.map(&:name).join(',')
-    @book.translator = @book.translators.map(&:name).join(',')
+    #@book.tag = @book.tags.map(&:name).join(',')
+    #@book.author = @book.authors.map(&:name).join(',')
+    #@book.translator = @book.translators.map(&:name).join(',')
   end
 
   # POST /books

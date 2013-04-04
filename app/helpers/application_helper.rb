@@ -27,7 +27,9 @@ module ApplicationHelper
     label_color = color.empty? ? "label" : "label label-#{color}"
     html = ''
     labels.each do |label|
-      html += content_tag(:span, label.name, :class => label_color) + ' '
+      html += content_tag :span, :class => label_color  do
+        link_to label, tag_path(label)
+      end
     end
     html.html_safe
   end
@@ -35,9 +37,8 @@ module ApplicationHelper
   def format_tags(tags)
     html = ''
     tags.each do |tag|
-      #html += content_tag(:i, '', :class => 'icon-tag') + tag.name + ' '
       html += content_tag :span, :class => 'tag' do
-        content_tag(:i, '', :class => 'icon-tag') + content_tag(:span, tag.name)
+        content_tag(:i, '', :class => 'icon-tag') + link_to(tag, tag_path(tag))
       end
     end
     html.html_safe

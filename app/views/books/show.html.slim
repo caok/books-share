@@ -5,7 +5,8 @@
       .book-cover
         == image_tag(@book.cover_url)
       ul.unstyled
-        li= format_tags @book.tags
+        /*li= format_tags @book.tags*/
+        li= format_tags @book.tag_list
         /*-if can? :edit, @book*/
         li
           i.icon-edit
@@ -24,14 +25,14 @@
         tbody
           tr
             td.span2= model_class.human_attribute_name(:author)
-            td= format_labels @book.authors, "info"
+            td= format_labels @book.author_list, "info"
           - unless @book.translators.blank?
             tr
               td.span2= model_class.human_attribute_name(:translator)
-              td= format_labels @book.translators
+              td= format_labels @book.translator_list
           tr
             td.span2= model_class.human_attribute_name(:tag)
-            td= format_labels @book.tags, "important"
+            td= format_labels @book.tag_list, "important"
           - unless @book.publishing_house.blank?
             tr
               td.span2= model_class.human_attribute_name(:publishing_house)

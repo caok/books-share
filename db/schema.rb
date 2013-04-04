@@ -11,18 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130328125206) do
+ActiveRecord::Schema.define(:version => 20130404104945) do
 
   create_table "attachments", :force => true do |t|
     t.string  "attachmenttable_type"
     t.integer "attachmenttable_id"
     t.string  "attachment"
-  end
-
-  create_table "authors", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "books", :force => true do |t|
@@ -34,20 +28,6 @@ ActiveRecord::Schema.define(:version => 20130328125206) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
-
-  create_table "relationships", :force => true do |t|
-    t.integer  "tag_id"
-    t.integer  "book_id"
-    t.integer  "author_id"
-    t.integer  "translator_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "relationships", ["author_id"], :name => "index_relationships_on_author_id"
-  add_index "relationships", ["book_id"], :name => "index_relationships_on_book_id"
-  add_index "relationships", ["tag_id"], :name => "index_relationships_on_tag_id"
-  add_index "relationships", ["translator_id"], :name => "index_relationships_on_translator_id"
 
   create_table "resources", :force => true do |t|
     t.integer  "book_id"
@@ -61,16 +41,21 @@ ActiveRecord::Schema.define(:version => 20130328125206) do
 
   add_index "resources", ["book_id"], :name => "index_resources_on_book_id"
 
-  create_table "tags", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       :limit => 128
+    t.datetime "created_at"
   end
 
-  create_table "translators", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
   create_table "users", :force => true do |t|

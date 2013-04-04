@@ -15,6 +15,8 @@ gem 'jquery-rails'
 # attachment
 gem 'carrierwave'
 gem 'mini_magick'
+# tag
+gem 'acts-as-taggable-on'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
