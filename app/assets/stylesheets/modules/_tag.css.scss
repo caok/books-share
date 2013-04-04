@@ -1,0 +1,22 @@
+.tag-list {
+  > ul {
+    list-style: none;
+    > li {
+      float: left;
+      width: 126px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      > a {
+        padding-left: 5px;
+      }
+    }
+  }
+}
+
+#tag_cloud {
+  width: 400px;
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}

@@ -6,6 +6,7 @@ BooksShare::Application.routes.draw do
   root :to => 'home#index'
 
   get "home/index"
+  get "home/tag_cloud", as: :tag_cloud
 
   get 'tags/:tag', to: 'books#index', as: :tag
   get 'authors/:author', to: 'books#index', as: :author
