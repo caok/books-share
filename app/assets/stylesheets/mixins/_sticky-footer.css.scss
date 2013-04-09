@@ -1,0 +1,36 @@
+/* Sticky Footer
+ *  http://www.cssstickyfooter.com/using-sticky-footer-code.html
+ */
+@mixin sticky_footer {
+  html, body {
+    height: 100%;
+  }
+  #wrap {
+    min-height: 100%;
+    min-width: 100%;
+    background:#eee image-url('paper.png') bottom left repeat;
+  }
+  #main {
+    overflow: auto;
+    padding-top: 80px;
+    padding-bottom: 71px;  /* must be same height as the footer */
+  }
+  #header {
+    min-height: 48px;
+    margin-bottom: -64px;
+  }
+  #footer {
+    position: relative;
+    margin-top: -71px;  /* negative value of footer height */
+    min-height: 20px;
+    clear: both;
+  }
+  /*Opera Fix*/
+  body:before {
+    content:"";
+    height:100%;
+    float:left;
+    width:0;
+    margin-top:-32767px;
+  }
+}

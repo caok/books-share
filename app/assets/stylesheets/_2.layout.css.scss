@@ -1,10 +1,12 @@
+@include sticky_footer;
+
 #content {
   padding: 1 * $baseLineHeight 0;
 }
 
 #footer {
   border-top: 1px solid $borderColor;
-  padding: 2 * $baseLineHeight 0;
+  padding: 1 * $baseLineHeight 0;
   background: $grayBackground;
 }
 
@@ -14,24 +16,12 @@
 
 @media (max-width: 767px) {
   #footer {
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: -20px;
-    margin-right: -20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: -10px;
+    margin-right: -10px;
   }
   .navbar-static-top .container {
     width: auto;
-  }
-}
-
-.signed_out {
-  #header {
-    border-bottom: 1px solid $borderColor;
-    padding: (0.5 * $baseFontSize) 0;
-  }
-  .navbar-inner {
-    @include box-shadow(none);
-    border-width: 0;
-    background: $bodyBackground;
   }
 }
