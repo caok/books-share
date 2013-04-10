@@ -43,3 +43,7 @@ group :development do
   gem "meta_request"
   gem "capistrano"
 end
+
+group :production do
+  gem 'exception_notification'
+end
