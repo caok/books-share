@@ -15,6 +15,11 @@
 }
 
 @media (max-width: 767px) {
+  body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   #footer {
     padding-left: 10px;
     padding-right: 10px;

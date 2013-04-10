@@ -3,7 +3,7 @@ BooksShare::Application.routes.draw do
 
   resources :books
 
-  root :to => 'home#index'
+  root :to => 'books#index'
 
   get "home/index"
   get "home/tag_cloud", as: :tag_cloud
