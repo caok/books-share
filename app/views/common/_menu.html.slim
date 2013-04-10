@@ -11,6 +11,6 @@
         = render 'common/search_form'
       .collapse.nav-collapse
         ul.nav
-          li= link_to "books", books_path
-          li= link_to "tag", tag_cloud_path
+          li= link_to t('labels.book'), books_path
+          li= link_to t('labels.tag'), tag_cloud_path
         = render 'common/user_nav'

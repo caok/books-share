@@ -17,9 +17,9 @@
 
 .book-sidebar {
   margin: $baseLineHeight / 2;
-  //background-color: $grayLighter;
-  //border: 1px solid #ddd;
   padding: $baseLineHeight;
+  background-color: $grayLighter;
+  border: 1px solid #ddd;
 
   .book-cover img {
     border: 1px solid darken($grayLighter, 15%);
