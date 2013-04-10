@@ -11,7 +11,7 @@ class Book < ActiveRecord::Base
   has_one :attachment, :as => :attachmenttable, :dependent => :destroy
 
   # validation
-  validates :name, :content, :presence => true
+  validates :name, :content, :cover, :tag_list, :presence => true
 
   # instance methods
   def cover_url
