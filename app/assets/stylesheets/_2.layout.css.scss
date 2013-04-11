@@ -15,18 +15,25 @@
 }
 
 @media (max-width: 767px) {
+  //html {
+    //height: auto;
+  //}
   body {
+    //height: auto;
     padding-left: 0;
     padding-right: 0;
   }
 
-  #footer {
+  #footer, .container {
     padding-left: 10px;
     padding-right: 10px;
-    margin-left: -10px;
-    margin-right: -10px;
   }
   .navbar-static-top .container {
     width: auto;
+  }
+
+  .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+    margin-left: 0px;
+    margin-right: 0px;
   }
 }

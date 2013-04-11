@@ -14,11 +14,11 @@
 }
 
 #tag_cloud {
-  width: 300px;
-  line-height: 1.6em;
+  width: auto;
+  line-height: 2.0em;
 
   > a {
-    padding-right: 5px;
+    padding: 5px;
     //text-decoration: none;
   }
   a.s {
@@ -38,5 +38,3 @@
     color: rgb(245, 47, 82);
   }
 }
-
-
