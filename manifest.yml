@@ -1,0 +1,14 @@
+---
+applications:
+- name: book-share
+  framework: rails3
+  runtime: ruby19
+  memory: 256M
+  instances: 1
+  url: book-share.${target-base}
+  path: .
+  services:
+    book-share:
+      vendor: mysql
+      version: '5.1'
+      tier: free

@@ -16,3 +16,7 @@
 
 # Ignore uploads
 /public/uploads
+
+# cloudfoundry
+/public/assets
+/vendor/cache
