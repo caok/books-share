@@ -10,6 +10,7 @@ gem "simple_form"
 gem "client_side_validations"
 gem "client_side_validations-simple_form"
 gem "devise"
+gem 'devise_invitable'
 gem "cancan"
 gem 'jquery-rails'
 # attachment
