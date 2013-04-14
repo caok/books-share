@@ -2,10 +2,12 @@
 
 FactoryGirl.define do
   factory :book do
-    name "MyString"
-    publishing_house "MyString"
-    pages 1
-    ISBN "MyString"
+    name "Aglic Web Development with Rails"
+    cover "cover_url"
+    tag_list "rails,ruby"
+    publishing_house "DHH"
+    pages 500
+    ISBN "978-7-121-11096-2"
     content "MyText"
   end
 end

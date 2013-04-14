@@ -11,6 +11,7 @@ class Book < ActiveRecord::Base
   has_one :attachment, :as => :attachmenttable, :dependent => :destroy
 
   # validation
+  validates :name, :uniqueness => true
   validates :name, :content, :tag_list, :presence => true
   validates :cover, :presence => true, :unless => :name
 
