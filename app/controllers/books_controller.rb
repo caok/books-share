@@ -44,9 +44,6 @@ class BooksController < ApplicationController
   # GET /books/1/edit
   def edit
     @book = Book.find(params[:id])
-    #@book.tag = @book.tags.map(&:name).join(',')
-    #@book.author = @book.authors.map(&:name).join(',')
-    #@book.translator = @book.translators.map(&:name).join(',')
   end
 
   # POST /books

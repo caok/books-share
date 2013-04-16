@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :attachment do
     attachmenttable_type "MyString"
     attachmenttable_id 1
-    attachment "MyString"
+    attachment "book.jpg"
   end
 end
