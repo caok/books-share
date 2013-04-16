@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :resource do
-    book nil
-    name "MyString"
-    format "MyString"
-    file_size "MyString"
-    links "MyString"
+    book_id 1
+    name "Aglic Web Development with Rails"
+    format "pdf"
+    file_size "10MB"
+    links "http://caok1231.com/blog/2013/04/14/tmux/"
   end
 end

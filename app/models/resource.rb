@@ -5,5 +5,5 @@ class Resource < ActiveRecord::Base
   belongs_to :book
 
   # validation
-  validates :name, :links, :book, :presence => true
+  validates :name, :links, :book_id, :presence => true
 end

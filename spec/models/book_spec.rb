@@ -17,5 +17,16 @@ describe Book do
       create :book, :name => book.name
       expect(book.save).to be_false
     end
+
+    it "with a blank tag_list" do
+      book.tag_list = ''
+      expect(book.save).to be_false
+    end
+
+    it "with a blank content" do
+      book.content = ''
+      expect(book.save).to be_false
+    end
+
   end
 end
