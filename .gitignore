@@ -20,3 +20,6 @@
 # cloudfoundry
 /public/assets
 /vendor/cache
+
+# simplecov
+/coverage
