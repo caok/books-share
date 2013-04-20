@@ -11,11 +11,10 @@ before_install:
   - "export JASMINE_BROWSER=firefox"
   - "firefox --version"
 
-before_script:
-  - "bundle exec rake travis:before_script"
+#before_script:
+  #- "bundle exec rake travis:before_script"
 
 env:
-  - DATABASE=pg
   - DATABASE=mysql2
 
 rvm:
