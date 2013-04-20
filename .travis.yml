@@ -3,6 +3,8 @@ language: ruby
 
 bundler_args: --without production development
 
+script: bundle exec rake travis:script
+
 before_install:
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
   - "export DISPLAY=:99.0"
@@ -10,8 +12,7 @@ before_install:
   - "firefox --version"
 
 before_script:
-  - "bundle exec rake db:migrate"
-  - "bundle exec rake db:test:prepare"
+  - "bundle exec rake travis:before_script"
 
 env:
   - DATABASE=mysql2
