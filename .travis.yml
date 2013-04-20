@@ -3,16 +3,11 @@ language: ruby
 
 bundler_args: --without production development
 
-script: bundle exec rake travis:script
-
 before_install:
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
   - "export DISPLAY=:99.0"
   - "export JASMINE_BROWSER=firefox"
   - "firefox --version"
-
-#before_script:
-  #- "bundle exec rake travis:before_script"
 
 env:
   - DATABASE=mysql2
@@ -20,20 +15,3 @@ env:
 rvm:
   - 1.9.3
   - 2.0.0
-
-matrix:
-  include:
-    - rvm: jruby-19mode
-      jdk: openjdk7
-      env:
-        - DATABASE=pg
-        - TIMEOUT=1000
-        - JRUBY_OPTS="-Xcext.enabled=true"
-  # jruby alwyas fails by unknown causes.
-  allow_failures:
-    - rvm: jruby-19mode
-      jdk: openjdk7
-      env:
-        - DATABASE=pg
-        - TIMEOUT=1000
-        - JRUBY_OPTS="-Xcext.enabled=true"
