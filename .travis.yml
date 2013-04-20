@@ -9,6 +9,10 @@ before_install:
   - "export JASMINE_BROWSER=firefox"
   - "firefox --version"
 
+before_script:
+  - "bundle exec rake db:migrate"
+  - "bundle exec rake db:test:prepare"
+
 env:
   - DATABASE=mysql2
 
