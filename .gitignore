@@ -23,3 +23,6 @@
 
 # simplecov
 /coverage
+
+# Ignore the database.yml
+/config/database.yml

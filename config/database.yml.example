@@ -1,0 +1,20 @@
+defaults: &defaults
+  adapter: mysql2
+  host: localhost
+  username: root
+  password: password
+  encoding: utf8
+  pool: 5
+  reconnect: false
+
+development:
+  <<: *defaults
+  database: books_share_development
+
+test:
+  <<: *defaults
+  database: books_share_test
+
+production:
+  <<: *defaults
+  database: books_share
