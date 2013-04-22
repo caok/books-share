@@ -7,5 +7,6 @@ FactoryGirl.define do
     format "pdf"
     file_size "10MB"
     links "http://caok1231.com/blog/2013/04/14/tmux/"
+    user_id "1"
   end
 end
