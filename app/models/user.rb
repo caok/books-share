@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   # validation #
   ##############
   validates :name, presence: true, :uniqueness => true
+  validates :email, :password, presence: true
 
   ######################       
   # callback functions #
