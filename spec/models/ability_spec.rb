@@ -1,3 +1,4 @@
+# https://github.com/ryanb/cancan/wiki/Testing-Abilities
 require 'spec_helper'
 require "cancan/matchers"
 
