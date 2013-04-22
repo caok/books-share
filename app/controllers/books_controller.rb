@@ -33,7 +33,7 @@ class BooksController < ApplicationController
   # GET /books/new
   # GET /books/new.json
   def new
-    @book = Book.new
+    @book = current_user.books.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,7 +49,7 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(params[:book])
+    @book = current_user.books.new(params[:book])
 
     respond_to do |format|
       if @book.save

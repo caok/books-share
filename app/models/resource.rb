@@ -2,6 +2,7 @@ class Resource < ActiveRecord::Base
   attr_accessible :file_size, :format, :links, :name, :book_id
 
   # assocation
+  belongs_to :user
   belongs_to :book
 
   # validation

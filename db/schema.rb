@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404104945) do
+ActiveRecord::Schema.define(:version => 20130422010206) do
 
   create_table "attachments", :force => true do |t|
     t.string  "attachmenttable_type"
@@ -27,7 +27,10 @@ ActiveRecord::Schema.define(:version => 20130404104945) do
     t.text     "content"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "user_id"
   end
+
+  add_index "books", ["user_id"], :name => "index_books_on_user_id"
 
   create_table "resources", :force => true do |t|
     t.integer  "book_id"
@@ -37,9 +40,11 @@ ActiveRecord::Schema.define(:version => 20130404104945) do
     t.string   "links"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   add_index "resources", ["book_id"], :name => "index_resources_on_book_id"
+  add_index "resources", ["user_id"], :name => "index_resources_on_user_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

@@ -7,6 +7,7 @@ class Book < ActiveRecord::Base
   acts_as_taggable_on :tags, :authors, :translators
 
   # assocation
+  belongs_to :user
   has_many :resources, :dependent => :destroy
   has_one :attachment, :as => :attachmenttable, :dependent => :destroy
 
