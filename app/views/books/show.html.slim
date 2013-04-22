@@ -7,14 +7,14 @@
       ul.unstyled
         /*li= format_tags @book.tags*/
         li= format_tags @book.tag_list
-        /*-if can? :edit, @book*/
-        li
-          i.icon-edit
-          = link_to t('helpers.links.edit'), edit_book_path(@book)
-        /*-if can? :destroy, @book*/
-        li
-          i.icon-remove
-          = link_to t('helpers.links.destroy'), @book, method: :delete, data: { confirm: t('helpers.links.confirm') }
+        -if can? :update, @book
+          li
+            i.icon-edit
+            = link_to t('helpers.links.edit'), edit_book_path(@book)
+        -if can? :destroy, @book
+          li
+            i.icon-remove
+            = link_to t('helpers.links.destroy'), @book, method: :delete, data: { confirm: t('helpers.links.confirm') }
 
   .span9
     header
@@ -53,8 +53,9 @@
 
     .book-resources
       .masthead
-        ul.nav.nav-pills.pull-right
-          li= link_to t("helpers.links.add_resource"), new_resource_path(:book_id => @book)
+        - if can? :create, Resource
+          ul.nav.nav-pills.pull-right
+            li= link_to t("helpers.links.add_resource"), new_resource_path(:book_id => @book)
         h2.muted= model_class.human_attribute_name(:resources)
       table.table.table-striped
         tbody

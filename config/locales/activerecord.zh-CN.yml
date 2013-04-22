@@ -6,7 +6,7 @@ zh-CN:
       resource: "资源"
     attributes:
       user:
-        name: "姓名"
+        name: "用户名"
         email: "Email"
         password: "密码"
         roles_mask: "角色"
