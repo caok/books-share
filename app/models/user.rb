@@ -3,17 +3,24 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable,
+         :validatable, :authentication_keys => [:login]
 
   # constant
   ROLES = %w[admin member]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :login
+  attr_accessor :login
 
   # assocation
   has_many :books
   has_many :resources
+
+  ##############
+  # validation #
+  ##############
+  validates :name, presence: true, :uniqueness => true
 
   ######################       
   # callback functions #
@@ -44,4 +51,16 @@ class User < ActiveRecord::Base
   def any_roles?(*a)
     !(roles & a.map{|i| i.to_s}).empty?
   end
+
+  private
+  # https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["lower(name) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions).first
+    end
+  end
+
 end
