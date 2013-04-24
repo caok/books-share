@@ -27,6 +27,5 @@ describe Book do
       book.content = ''
       expect(book.save).to be_false
     end
-
   end
 end

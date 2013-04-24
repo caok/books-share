@@ -15,7 +15,7 @@ describe Ability do
     end
   end
 
-  it "can manage Book when user has a admin role" do
+  it "when user has signed in with a admin role" do
     ability = Ability.new(create :admin_user)
     ability.should be_able_to(:manage, :all)
   end
