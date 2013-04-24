@@ -27,6 +27,11 @@ describe Book do
       book.content = ''
       expect(book.save).to be_false
     end
+  end
 
+  it "cover_url" do
+    book.attachment = Attachment.create
+    book.save
+    book.cover_url.should eq book.attachment.attachment.url
   end
 end

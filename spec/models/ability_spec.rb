@@ -28,18 +28,28 @@ describe Ability do
     it { should be_able_to(:create, Resource) }
     it { should be_able_to(:manage, Attachment) }
 
-    context "can not update and destroy the thing belongs to others" do
-      it { should_not be_able_to(:update, Book.new) }
-      it { should_not be_able_to(:destroy, Book.new) }
-      it { should_not be_able_to(:update, Resource.new) }
-      it { should_not be_able_to(:destroy, Resource.new) }
+    context "belongs to others" do
+      context "can not update and destroy the book" do
+        it { should_not be_able_to(:update, Book.new) }
+        it { should_not be_able_to(:destroy, Book.new) }
+      end
+
+      context "can not update and destroy the resource" do
+        it { should_not be_able_to(:update, Resource.new) }
+        it { should_not be_able_to(:destroy, Resource.new) }
+      end
     end
 
-    context "can update and destroy the thing belongs to him" do
-      it { should be_able_to(:update, member.books.new) }
-      it { should be_able_to(:destroy, member.books.new) }
-      it { should be_able_to(:update, member.resources.new) }
-      it { should be_able_to(:destroy, member.resources.new) }
+    context "belongs to him" do
+      context "can update and destroy the book" do
+        it { should be_able_to(:update, member.books.new) }
+        it { should be_able_to(:destroy, member.books.new) }
+      end
+
+      context "can update and destroy the resource" do
+        it { should be_able_to(:update, member.resources.new) }
+        it { should be_able_to(:destroy, member.resources.new) }
+      end
     end
   end
 end

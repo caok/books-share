@@ -11,6 +11,6 @@ FactoryGirl.define do
     pages 500
     ISBN "978-7-121-11096-2"
     content "MyText"
-    user_id "1"
+    user
   end
 end
