@@ -30,3 +30,6 @@ zh-CN:
     book: "书籍"
     tag: "标签"
     resource: "资源"
+
+  unauthorized:
+      default: "你没有权限访问此页面。"
