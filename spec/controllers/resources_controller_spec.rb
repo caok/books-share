@@ -106,4 +106,32 @@ describe ResourcesController do
       end
     end
   end
+
+  describe "DELETE#destroy" do
+    context 'when user has not signed in' do
+      it "should be redirect" do
+        delete :destroy, id: resource.id
+        response.should redirect_to root_path
+        flash[:alert].should eql(I18n.t('unauthorized.default'))
+      end
+    end
+
+    context 'when user has signed in' do
+      before(:each) do
+        sign_in user
+      end
+
+      it 'can destroy the resource blongs to him' do
+        delete :destroy, id: resource.id
+        response.should redirect_to resources_path
+      end
+
+      it 'can not destroy the resource blongs to other' do
+        resource1 = create :resource
+        delete :destroy, id: resource1.id
+        response.should redirect_to root_path
+        flash[:alert].should eql(I18n.t('unauthorized.default'))
+      end
+    end
+  end
 end

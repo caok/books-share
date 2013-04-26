@@ -14,7 +14,7 @@ BooksShare::Application.routes.draw do
 
   match "/search" => "search#index", :as => :search
 
-  devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
+  devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

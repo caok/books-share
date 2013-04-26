@@ -6,6 +6,7 @@ zh-CN:
       resource: "资源"
     attributes:
       user:
+        login: "登录名"
         name: "用户名"
         email: "Email"
         password: "密码"

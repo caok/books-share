@@ -16,6 +16,7 @@ describe BooksController do
       it "should not allow anonymous access" do
         get :new
         response.should_not be_success
+        flash[:alert].should eql(I18n.t('unauthorized.default'))
       end
     end
 
@@ -49,6 +50,7 @@ describe BooksController do
       it "should be redirect" do
         post 'create'
         response.should be_redirect
+        flash[:alert].should eql(I18n.t('unauthorized.default'))
       end
     end
   end
@@ -77,6 +79,7 @@ describe BooksController do
           sign_in user
           get :edit, :id => book_of_other_user.id
           response.should_not be_success
+          flash[:alert].should eql(I18n.t('unauthorized.default'))
         end
       end
     end
@@ -100,7 +103,36 @@ describe BooksController do
     context 'when user has not signed in' do
       it "should be redirect" do
         put 'update', :id => book.id, :book => valid_attributes
-        response.should be_redirect
+        response.should redirect_to root_path
+        flash[:alert].should eql(I18n.t('unauthorized.default'))
+      end
+    end
+  end
+
+  describe "DELETE#destroy" do
+    context 'when user has not signed in' do
+      it "should be redirect" do
+        delete :destroy, id: book.id
+        response.should redirect_to root_path
+        flash[:alert].should eql(I18n.t('unauthorized.default'))
+      end
+    end
+
+    context 'when user has signed in' do
+      before(:each) do
+        sign_in user
+      end
+
+      it 'can destroy the book blongs to him' do
+        delete :destroy, id: book.id
+        response.should redirect_to books_path
+      end
+
+      it 'can not destroy the book blongs to other' do
+        book1 = create :book
+        delete :destroy, id: book1.id
+        response.should redirect_to root_path
+        flash[:alert].should eql(I18n.t('unauthorized.default'))
       end
     end
   end
