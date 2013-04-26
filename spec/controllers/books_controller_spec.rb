@@ -4,14 +4,14 @@ describe BooksController do
   let(:user) { create :member_user }
   let(:book) { create :book, :user => user }
 
-  describe ":index" do
+  describe "GET#index" do
     it "should have an index action" do
       get :index
       response.should be_success
     end
   end
 
-  describe ":new" do
+  describe "GET#new" do
     describe "unauthenticated" do
       it "should not allow anonymous access" do
         get :new
@@ -28,7 +28,32 @@ describe BooksController do
     end
   end
 
-  describe ":edit" do
+  describe "POST#create" do
+    context "when user has signed in" do
+      before(:each) do
+        sign_in user
+      end
+
+      let(:valid_attributes) { attributes_for(:book) }
+
+      context 'with valid attributes' do
+        it 'creates the book' do
+          expect {
+            post 'create', :book => valid_attributes
+          }.to change{Book.count}.by(1)
+        end
+      end
+    end
+
+    context 'when user has not signed in' do
+      it "should be redirect" do
+        post 'create'
+        response.should be_redirect
+      end
+    end
+  end
+
+  describe "GET#edit" do
     context "unauthenticated" do
       it "should not allow anonymous access" do
         get :edit, :id => book.id
@@ -53,6 +78,29 @@ describe BooksController do
           get :edit, :id => book_of_other_user.id
           response.should_not be_success
         end
+      end
+    end
+  end
+
+  describe "PUT#update" do
+    let(:valid_attributes) { attributes_for(:book) }
+
+    context 'when user has signed in' do
+      before(:each) do
+        sign_in user
+      end
+      context 'with valid attributes' do
+        it 'update the book' do
+          put 'update', :id => book.id, :book => valid_attributes
+          response.should redirect_to(book)
+        end
+      end
+    end
+
+    context 'when user has not signed in' do
+      it "should be redirect" do
+        put 'update', :id => book.id, :book => valid_attributes
+        response.should be_redirect
       end
     end
   end
