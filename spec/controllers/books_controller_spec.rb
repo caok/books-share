@@ -11,6 +11,13 @@ describe BooksController do
     end
   end
 
+  describe "GET#show" do
+    it "should have an show action" do
+      get :show, :id => book.id
+      response.should be_success
+    end
+  end
+
   describe "GET#new" do
     describe "unauthenticated" do
       it "should not allow anonymous access" do
@@ -124,8 +131,10 @@ describe BooksController do
       end
 
       it 'can destroy the book blongs to him' do
-        delete :destroy, id: book.id
-        response.should redirect_to books_path
+        book = create :book, :user => user
+        expect {
+          delete :destroy, id: book.id
+        }.to change{Book.count}.by(-1)
       end
 
       it 'can not destroy the book blongs to other' do

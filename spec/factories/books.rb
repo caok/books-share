@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :book do
-    name "Aglic Web Development with Rails"
+    sequence(:name) { |n| "book#{n}" }
     cover "cover_url"
     tag_list "rails,ruby"
     author_list "Brad,Ediger"

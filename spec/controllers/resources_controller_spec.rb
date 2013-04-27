@@ -12,6 +12,13 @@ describe ResourcesController do
     end
   end
 
+  describe "GET#show" do
+    it "should have an show action" do
+      get :show, :id => resource.id
+      response.should be_success
+    end
+  end
+
   describe "GET#new" do
     describe "unauthenticated" do
       it "should not allow anonymous access" do
@@ -30,22 +37,23 @@ describe ResourcesController do
   end
 
   describe "POST#create" do
-    #context "when user has signed in" do
-      #before(:each) do
-        #sign_in user
-      #end
+    context "when user has signed in" do
+      before(:each) do
+        sign_in user
+      end
 
-      #let(:valid_attributes) { attributes_for(:resource) }
+      context 'with valid attributes' do
+        let(:book) { create :book }
+        let(:valid_attributes) { attributes_for(:resource).merge(:book_id => book.id) }
 
-      #context 'with valid attributes' do
-        #it 'creates the resource' do
-          #expect {
-            #post 'create', :resource => valid_attributes
-          #}.to change{Resource.count}.by(1)
-          #response.should redirect_to(resource.book)
-        #end
-      #end
-    #end
+        it 'creates the resource' do
+          expect {
+            post 'create', :resource => valid_attributes
+          }.to change{Resource.count}.by(1)
+          response.should redirect_to(resource.book)
+        end
+      end
+    end
 
     context 'when user has not signed in' do
       it "should be redirect" do
@@ -122,8 +130,10 @@ describe ResourcesController do
       end
 
       it 'can destroy the resource blongs to him' do
-        delete :destroy, id: resource.id
-        response.should redirect_to resources_path
+        resource = create :resource, :user => user
+        expect {
+          delete :destroy, id: resource.id
+        }.to change{Resource.count}.by(-1)
       end
 
       it 'can not destroy the resource blongs to other' do
