@@ -23,8 +23,8 @@ module ApplicationHelper
   end
 
   # http://twitter.github.com/bootstrap/components.html#labels-badges
-  def format_labels(labels, color = '', type = 'tag')
-    label_color = color.empty? ? "label" : "label label-#{color}"
+  def format_labels(labels, color = '', type = "tag")
+    label_color = color.blank? ? "label" : "label label-#{color}"
     html = ''
     labels.each do |label|
       html += content_tag :span, :class => label_color  do

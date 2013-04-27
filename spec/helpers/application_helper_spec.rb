@@ -56,4 +56,57 @@ describe ApplicationHelper do
     end
   end
 
+  describe 'format_tags' do
+    subject { helper.format_tags(tags) }
+    let(:tags) { ["python", "code"] }
+
+    it { should eq "<span class=\"tag\"><i class=\"icon-tag\"></i><a href=\"/tags/python\">python</a></span><span class=\"tag\"><i class=\"icon-tag\"></i><a href=\"/tags/code\">code</a></span>" }
+  end
+
+  describe 'format_labels' do
+    let(:labels) { ["a", "b"] }
+
+    context "only labels" do
+      subject { helper.format_labels(labels) }
+
+      it 'with empty color and type' do
+        should == "<span class=\"label\"><a href=\"/tags/a\">a</a></span><span class=\"label\"><a href=\"/tags/b\">b</a></span>"
+      end
+    end
+
+    context "with labels and color" do
+      subject { helper.format_labels(labels, color) }
+      let(:color) { "info" }
+
+      it 'with color of info and empty type' do
+        should == "<span class=\"label label-info\"><a href=\"/tags/a\">a</a></span><span class=\"label label-info\"><a href=\"/tags/b\">b</a></span>"
+      end
+    end
+
+    context "with labels, color and type" do
+      subject { helper.format_labels(labels, color, type) }
+      let(:color) { "info" }
+
+      context "tag" do
+        let(:type) { "tag" }
+        it 'with type' do
+          should == "<span class=\"label label-info\"><a href=\"/tags/a\">a</a></span><span class=\"label label-info\"><a href=\"/tags/b\">b</a></span>"
+        end
+      end
+
+      context "author" do
+        let(:type) { "author" }
+        it 'with type' do
+          should == "<span class=\"label label-info\"><a href=\"/authors/a\">a</a></span><span class=\"label label-info\"><a href=\"/authors/b\">b</a></span>"
+        end
+      end
+
+      context "translator" do
+        let(:type) { "translator" }
+        it 'with type' do
+          should == "<span class=\"label label-info\"><a href=\"/translators/a\">a</a></span><span class=\"label label-info\"><a href=\"/translators/b\">b</a></span>"
+        end
+      end
+    end
+  end
 end

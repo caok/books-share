@@ -1,5 +1,5 @@
 class Resource < ActiveRecord::Base
-  attr_accessible :file_size, :format, :links, :name, :book_id, :user
+  attr_accessible :file_size, :format, :links, :name, :book_id
 
   # assocation
   belongs_to :user
