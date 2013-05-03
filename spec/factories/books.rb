@@ -12,5 +12,11 @@ FactoryGirl.define do
     ISBN "978-7-121-11096-2"
     content "MyText"
     user
+
+    factory :invalid_book do
+      name nil
+      tag_list nil
+      content nil
+    end
   end
 end

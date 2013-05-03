@@ -53,6 +53,20 @@ describe ResourcesController do
           response.should redirect_to(resource.book)
         end
       end
+
+      context "with invalid attributes" do
+        let(:invalid_attributes) { attributes_for(:invalid_resource) }
+        it "does not save the new resource" do
+          expect{
+            post :create, resource: invalid_attributes
+          }.to_not change(Resource, :count)
+        end
+
+        it "re-renders the new method" do
+          post :create, resource: invalid_attributes
+          response.should render_template :new
+        end
+      end
     end
 
     context 'when user has not signed in' do
@@ -94,15 +108,29 @@ describe ResourcesController do
 
   describe "PUT#update" do
     let(:valid_attributes) { attributes_for(:resource) }
+    let(:invalid_attributes) { attributes_for(:invalid_resource) }
 
     context 'when user has signed in' do
       before(:each) do
         sign_in user
       end
+
       context 'with valid attributes' do
         it 'update the resource' do
           put 'update', :id => resource.id, :resource => valid_attributes
           response.should redirect_to(resource)
+        end
+      end
+
+      context "with invalid attributes" do
+        it "locates the requested resource" do
+          put :update, id: resource, resource: invalid_attributes
+          assigns(:resource).should eq(resource)
+        end
+
+        it "re-renders the edit method" do
+          put :update, id: resource, resource: invalid_attributes
+          response.should render_template :edit
         end
       end
     end

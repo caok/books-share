@@ -42,13 +42,26 @@ describe BooksController do
         sign_in user
       end
 
-      let(:valid_attributes) { attributes_for(:book) }
-
       context 'with valid attributes' do
+        let(:valid_attributes) { attributes_for(:book) }
         it 'creates the book' do
           expect {
             post 'create', :book => valid_attributes
           }.to change{Book.count}.by(1)
+        end
+      end
+
+      context "with invalid attributes" do
+        let(:invalid_attributes) { attributes_for(:invalid_book) }
+        it "does not save the new book" do
+          expect{
+            post :create, book: invalid_attributes
+          }.to_not change(Book, :count)
+        end
+
+        it "re-renders the new method" do
+          post :create, book: invalid_attributes
+          response.should render_template :new
         end
       end
     end
@@ -94,15 +107,29 @@ describe BooksController do
 
   describe "PUT#update" do
     let(:valid_attributes) { attributes_for(:book) }
+    let(:invalid_attributes) { attributes_for(:invalid_book) }
 
     context 'when user has signed in' do
       before(:each) do
         sign_in user
       end
+
       context 'with valid attributes' do
         it 'update the book' do
           put 'update', :id => book.id, :book => valid_attributes
           response.should redirect_to(book)
+        end
+      end
+
+      context "with invalid attributes" do
+        it "locates the requested book" do
+          put :update, id: book, book: invalid_attributes
+          assigns(:book).should eq(book)
+        end
+
+        it "re-renders the edit method" do
+          put :update, id: book, book: invalid_attributes
+          response.should render_template :edit
         end
       end
     end
