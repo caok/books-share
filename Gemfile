@@ -16,7 +16,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 # tag
 gem 'acts-as-taggable-on'
-gem 'coveralls', require: false
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -46,7 +45,8 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
+  gem 'coveralls', require: false
 end
 
 group :production do
