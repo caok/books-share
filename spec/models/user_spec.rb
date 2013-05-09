@@ -94,4 +94,25 @@ describe User do
     end
   end
 
+  describe "roles" do
+    it "is? role" do
+      member = create :member_user
+      member.is?(:member).should be_true
+      member.is?(:admin).should be_false
+      admin = create :admin_user
+      admin.is?(:admin).should be_true
+    end
+
+    it "roles" do
+      member = create :member_user
+      member.roles.should == ["member"]
+    end
+
+    it "any_roles?" do
+      user = create :admin_user
+      user.any_roles?(:admin).should be_true
+      user.any_roles?(:admin, :member).should be_true
+      user.any_roles?(:member).should be_false
+    end
+  end
 end
