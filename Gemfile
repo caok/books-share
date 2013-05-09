@@ -16,6 +16,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 # tag
 gem 'acts-as-taggable-on'
+gem 'coveralls', require: false
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
