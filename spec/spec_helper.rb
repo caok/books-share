@@ -1,8 +1,6 @@
 # https://github.com/colszowka/simplecov
-#require 'simplecov'
-#SimpleCov.start 'rails'
-require 'coveralls'
-Coveralls.wear!('rails')
+require 'simplecov'
+SimpleCov.start 'rails'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
