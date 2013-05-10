@@ -6,8 +6,34 @@ describe BooksController do
 
   describe "GET#index" do
     it "should have an index action" do
+      book = create :book
       get :index
       response.should be_success
+      assigns(:books).should eq([book])
+    end
+
+    it "populates an array of books with tag" do
+      book = create :book, :tag_list => 'vi'
+      book1 = create :book
+      get :index, tag: "vi"
+      response.should be_success
+      assigns(:books).should eq([book])
+    end
+
+    it "populates an array of books with author" do
+      book = create :book, :author_list => 'ryan'
+      book1 = create :book
+      get :index, author: "ryan"
+      response.should be_success
+      assigns(:books).should eq([book])
+    end
+
+    it "populates an array of books with translator" do
+      book = create :book, :translator_list => 'clark'
+      book1 = create :book
+      get :index, translator: "clark"
+      response.should be_success
+      assigns(:books).should eq([book])
     end
   end
 
