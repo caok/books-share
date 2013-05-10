@@ -45,7 +45,7 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
 end
 
 group :production do

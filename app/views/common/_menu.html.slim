@@ -13,4 +13,5 @@
         ul.nav
           li= link_to t('labels.book'), books_path
           li= link_to t('labels.tag'), tag_cloud_path
-        = render 'common/user_nav'
+        #userbar
+          = render 'common/user_nav'
