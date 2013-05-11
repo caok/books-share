@@ -9,7 +9,7 @@ describe "sign up and login", :type => :feature do
     fill_in 'Email', :with => 'example@caok1231.com'
     fill_in '* 密码', :with => 'password'
     fill_in '确认密码', :with => 'password'
-    click_button I18n.t('labels.sign_up')
+    click_button I18n.t('devise.views.registrations.new.submit')
     page.should have_content('欢迎您！您已注册成功.')
     within("#userbar") do
       click_on 'example'
@@ -21,7 +21,7 @@ describe "sign up and login", :type => :feature do
     click_link '登录'
     fill_in '登录名', :with => 'example'
     fill_in '密码', :with => 'password'
-    click_button I18n.t('labels.sign_in')
+    click_button I18n.t('devise.views.sessions.new.submit')
     page.should have_content('登录成功.')
   end
 
@@ -32,7 +32,7 @@ describe "sign up and login", :type => :feature do
     fill_in 'Email', :with => 'demo@caok1231.com'
     fill_in '* 密码', :with => 'password'
     fill_in '确认密码', :with => 'password'
-    click_button I18n.t('labels.sign_up')
+    click_button I18n.t('devise.views.registrations.new.submit')
     page.should have_content('欢迎您！您已注册成功.')
     within("#userbar") do
       click_on 'demo'
@@ -44,7 +44,7 @@ describe "sign up and login", :type => :feature do
     click_link '登录'
     fill_in '登录名', :with => 'demo@caok1231.com'
     fill_in '密码', :with => 'password'
-    click_button I18n.t('labels.sign_in')
+    click_button I18n.t('devise.views.sessions.new.submit')
     page.should have_content('登录成功.')
   end
 end
