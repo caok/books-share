@@ -24,7 +24,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'turbo-sprockets-rails3'
   gem 'bootstrap-sass'
-  gem 'therubyracer', :platforms => :ruby #Recommended to install Node.js, without therubyracer
+  #gem 'therubyracer', :platforms => :ruby #Recommended to install Node.js, without therubyracer
 end
 
 group :development do
