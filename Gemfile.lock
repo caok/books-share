@@ -131,6 +131,7 @@ GEM
       net-ssh (>= 2.6.5)
     nokogiri (1.5.8)
     orm_adapter (0.4.0)
+    pg (0.15.1)
     polyglot (0.3.3)
     pry (0.9.12)
       coderay (~> 1.0.5)
@@ -268,6 +269,7 @@ DEPENDENCIES
   mini_magick
   mysql2
   nokogiri
+  pg
   pry-nav
   quiet_assets
   rails (= 3.2.12)
