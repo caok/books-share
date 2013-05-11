@@ -3,8 +3,6 @@ BooksShare::Application.routes.draw do
 
   resources :books
 
-  root :to => 'books#index'
-
   get "home/index"
   get "home/tag_cloud", as: :tag_cloud
 
@@ -15,6 +13,15 @@ BooksShare::Application.routes.draw do
   match "/search" => "search#index", :as => :search
 
   devise_for :users
+
+  authenticated :user do
+    root to: "home#index"
+  end
+
+  as :user do
+    root :to => 'books#index'
+    get 'account' => 'registrations#edit', :as => 'account'
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

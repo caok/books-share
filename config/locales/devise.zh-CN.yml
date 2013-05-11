@@ -1,6 +1,17 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 # https://github.com/tigrish/devise-i18n/blob/master/locales/zh-CN.yml
 zh-CN:
+  errors:
+    messages:
+      already_confirmed: 已经确认，请重新登录.
+      confirmation_period_expired: 必须在 %{period} 以内确认，请重新申请
+      expired: 您已过期，请重新申请
+      not_found: 没有找到
+      not_locked: 未锁定
+      not_saved:
+        one: ! '因为1个错误导致此%{resource}保存失败:'
+        other: ! '因为%{count}个错误导致此%{resource}保存失败:'
+
   devise:
     confirmations:
       confirmed: 您的帐号已经确认，您现在已登录.
@@ -47,13 +58,56 @@ zh-CN:
       send_instructions: 几分钟后，您将收到一封解锁帐号的邮件.
       send_paranoid_instructions: 如果您的邮箱存在于我们的数据库中，您将收到一封解锁账号的邮件.
       unlocked: 您的帐号已成功解锁，您现在已登录.
-  errors:
-    messages:
-      already_confirmed: 已经确认，请重新登录.
-      confirmation_period_expired: 必须在 %{period} 以内确认，请重新申请
-      expired: 您已过期，请重新申请
-      not_found: 没有找到
-      not_locked: 未锁定
-      not_saved:
-        one: ! '因为1个错误导致此%{resource}保存失败:'
-        other: ! '因为%{count}个错误导致此%{resource}保存失败:'
+    mailer:
+      confirmation_instructions:
+        subject: '激活信息'
+      reset_password_instructions:
+        subject: '重置密码信息'
+      unlock_instructions:
+        subject: '解锁信息'
+    views:
+      links:
+        sign_in: '登录'
+        sign_up: '注册'
+        forget_pass: '忘记密码?'
+        resend_confirmation: "没有收到确认指令？"
+        resend_unlock: "没有收到解锁指令？"
+        omni_auth: "用%{provider}登录"
+      confirmations:
+        new:
+          title: '重新发送确认指令'
+          submit: '重发确认邮件'
+      passwords:
+        edit:
+          title: '修改密码'
+          submit: '修改'
+        new:
+          title: '忘记密码'
+          submit: '发送重置邮件'
+      registrations:
+        edit:
+          title: '个人资料设置'
+          password: '修改密码'
+          submit: '修改'
+          change_pass_tip: '如果你不想改变,留下空白'
+          change_pass_confirm: '需要输入现在的密码确认'
+          cancel_account: '删除帐号'
+          cancel_account_warning: '删除帐号会删除所有关联的个人资料，并且操作无法恢复'
+          cancel_account_confirm: '确认删除帐号吗？'
+        new:
+          title: '注册'
+          submit: '注册'
+      sessions:
+        new:
+          title: '登录'
+          submit: '登录'
+          login: '用户名/Email'
+          remember_me: '记住我'
+    navigation:
+      home: '我的主页'
+      sign_in: '登录'
+      sign_up: '注册'
+      sign_out: '退出'
+      edit_info: '个人资料设置'
+      change_password: '修改密码'
+      change_registration: '修改登记'

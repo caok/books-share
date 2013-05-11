@@ -22,9 +22,6 @@ zh-CN:
     search: "搜索"
 
   labels:
-    sign_in: "登录"
-    sign_up: "注册"
-    logout: "退出"
     cancel: "取消"
     close: "关闭"
     book: "书籍"
