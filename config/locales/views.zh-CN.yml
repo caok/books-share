@@ -45,3 +45,8 @@ zh-CN:
   tags:
     index:
       title: "分类"
+  home:
+    index:
+      title: "我的主页"
+      add_book: "添加书籍"
+      add_plan: "新建计划"
