@@ -11,7 +11,9 @@
         = render 'common/search_form'
       .collapse.nav-collapse
         ul.nav
-          li= link_to t('labels.book'), books_path
-          li= link_to t('labels.tag'), tag_cloud_path
+          li[class='#{'active' if params[:controller] == 'books'}']
+            = link_to t('labels.book'), books_path
+          li[class='#{'active' if params[:action] == 'tag_cloud'}']
+            = link_to t('labels.tag'), tag_cloud_path
         #userbar
           = render 'common/user_nav'
