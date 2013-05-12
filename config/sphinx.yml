@@ -1,0 +1,8 @@
+development: &default
+  enable_star: 1
+  min_infix_len: 1
+  ngram_len: 1
+  ngram_chars :  "U+3000..U+2FA1F"
+
+production :
+  <<: *default
