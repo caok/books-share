@@ -29,6 +29,9 @@ role :web, "#{deploy_server}"                          # Your HTTP server, Apach
 role :app, "#{deploy_server}"                          # This may be the same as your `Web` server
 role :db,  "#{deploy_server}", :primary => true        # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
+
+after "deploy", "deploy:cleanup" # keep only the last 5 releases
+
 namespace :deploy do
   desc "Start Application"
   task :start, :roles => :app do
