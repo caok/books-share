@@ -66,3 +66,4 @@
                 b= resource.format
               td= resource.file_size
               td= link_to t("helpers.links.hyperlink"), resource.links, class: "btn btn-mini btn-success", target: "_blank"
+= render "shared/uyan_js", :su => "/books/#{@book.id}"

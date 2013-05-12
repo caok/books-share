@@ -16,6 +16,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 # tag
 gem 'acts-as-taggable-on'
+# fulltext search
+gem 'thinking-sphinx'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
