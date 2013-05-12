@@ -29,4 +29,5 @@
 # Ignore the database.yml
 /config/database.yml
 /config/development.sphinx.conf
+dump.rdb
 
