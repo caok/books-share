@@ -9,9 +9,11 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
+/db/sphinx/
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
+/log/*
 /tmp
 
 # Ignore uploads
@@ -26,3 +28,5 @@
 
 # Ignore the database.yml
 /config/database.yml
+/config/development.sphinx.conf
+
