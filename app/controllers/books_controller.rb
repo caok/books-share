@@ -14,7 +14,7 @@ class BooksController < ApplicationController
       search_options = {
           :with => {},
           :page => params[:page],
-          :per_page => 20,
+          :per_page => 2,
           :order => :created_at,
           :sort_mode => :desc
         }

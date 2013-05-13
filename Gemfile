@@ -2,7 +2,7 @@
 source 'http://ruby.taobao.org/'
 
 gem 'rails', '3.2.12'
-gem 'mysql2'
+gem 'mysql2', "~> 0.3.12b6"
 gem 'slim-rails'
 gem 'kaminari'
 gem 'nokogiri'
@@ -26,7 +26,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'turbo-sprockets-rails3'
   gem 'bootstrap-sass'
-  gem 'therubyracer', :platforms => :ruby #Recommended to install Node.js, without therubyracer
+  #gem 'therubyracer', :platforms => :ruby #Recommended to install Node.js, without therubyracer
 end
 
 group :development do
@@ -51,7 +51,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  #gem 'pg'
   gem 'exception_notification'
   gem 'unicorn', :platforms => :ruby
 end
