@@ -14,9 +14,9 @@ This is the source code of [books-share](http://book-share.cloudfoundry.com).
 * nodejs
 
 ## development setup
-sudo apt-get install sphinxsearch
-sudo apt-get install nodejs
-rake db:setup
-rake ts:configure
-rake ts:index
-rake ts:start
+* sudo apt-get install sphinxsearch
+* sudo apt-get install nodejs
+* rake db:setup
+* rake ts:configure
+* rake ts:index
+* rake ts:start
