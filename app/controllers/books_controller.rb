@@ -10,6 +10,15 @@ class BooksController < ApplicationController
       @books = Book.tagged_with(params[:author], :on => :authors, :any => true)
     when params[:translator]
       @books = Book.tagged_with(params[:translator], :on => :translators, :any => true)
+    when params[:q]
+      search_options = {
+          :with => {},
+          :page => params[:page],
+          :per_page => 2,
+          :order => :created_at,
+          :sort_mode => :desc
+        }
+      @books = Book.search sphinx_escape(params[:q]), search_options
     else
       @books = Book.all
     end
