@@ -1,5 +1,6 @@
 #encoding:utf-8
 require 'bundler/capistrano'
+require 'thinking_sphinx/capistrano'
 
 set :application, "books-share"
 #set :repository, "git://github.com/caok/books-share.git"
