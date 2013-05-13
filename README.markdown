@@ -2,8 +2,7 @@
 This is the source code of [books-share](http://book-share.cloudfoundry.com).
 
 ## Take a look
-* cloudfoundry: http://book-share.cloudfoundry.com
-* heroku: http://shbook.herokuapp.com
+cloudfoundry: http://book-share.cloudfoundry.com
 
 ## Requirements
 
