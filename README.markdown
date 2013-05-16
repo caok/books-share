@@ -2,6 +2,10 @@
 This is the source code of [books-share](http://book-share.cloudfoundry.com).
 
 ## Take a look
+vps: http://book.nyepoch.com
+<br/>
+vps(ip): http://198.199.86.209:9000
+<br/>
 cloudfoundry: http://book-share.cloudfoundry.com
 
 ## Requirements
