@@ -30,7 +30,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
-  process :resize_to_fit => [160, 200], if: :image?
+  process :resize_to_fit => [160, 200], :if => :image?
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
@@ -56,8 +56,9 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  process :set_content_type
   protected
   def image?(new_file)
-    new_file.content_type.include? 'image'
+    new_file.content_type.start_with? 'image'
   end
 end

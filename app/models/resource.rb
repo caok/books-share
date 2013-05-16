@@ -7,14 +7,13 @@ class Resource < ActiveRecord::Base
   belongs_to :book
 
   # validation
-  validates :links, :book_id, :presence => true
+  validates :book_id, :presence => true
 
   ######################
   # callback functions #
   ######################
   before_save :set_resource_attributes
   def set_resource_attributes
-    binding.pry
     if links.present? && links_changed?
       self.name      = File.basename(links.file.identifier, '.*').titleize
       self.format    = links.file.content_type.split('/').last
