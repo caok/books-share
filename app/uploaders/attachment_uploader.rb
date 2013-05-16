@@ -4,6 +4,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  include CarrierWave::MimeTypes
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   # include Sprockets::Helpers::RailsHelper
@@ -29,7 +30,8 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
-  process :resize_to_fit => [160, 200]
+  process :resize_to_fit => [160, 200], if: :image?
+
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   #
@@ -45,7 +47,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg gif png pdf)
   end
 
   # Override the filename of the uploaded files:
@@ -54,4 +56,8 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  protected
+  def image?(new_file)
+    new_file.content_type.include? 'image'
+  end
 end

@@ -13,7 +13,7 @@ table
 
   - @resources.each do |resource|
     tr
-      td = resource.book
+      td = resource.book.name
       td = resource.name
       td = resource.format
       td = resource.file_size
@@ -25,3 +25,4 @@ table
 br
 
 = link_to 'New Resource', new_resource_path
+

@@ -274,6 +274,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   meta_request
+  mime-types
   mini_magick
   mysql2 (~> 0.3.12b6)
   nokogiri

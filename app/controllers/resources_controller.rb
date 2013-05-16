@@ -3,7 +3,7 @@ class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
   def index
-    @resources = Resource.all
+    @resources = Resource.where(book_id: params[:book_id])
 
     respond_to do |format|
       format.html # index.html.erb
