@@ -24,9 +24,9 @@ class User < ActiveRecord::Base
   validates :name, presence: true, :uniqueness => true
   validates :email, :password, presence: true
 
-  ######################       
+  ######################
   # callback functions #
-  ######################       
+  ######################
   before_create :set_default_roles_for_user
   def set_default_roles_for_user
     self.roles = 'member' if self.roles_mask.blank?

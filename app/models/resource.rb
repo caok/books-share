@@ -1,10 +1,12 @@
 class Resource < ActiveRecord::Base
-  attr_accessible :file_size, :format, :links, :name, :book_id
+  attr_accessible :book_id, :file
+  attr_accessor :file
 
   # assocation
   belongs_to :user
   belongs_to :book
+  has_one :attachment, :as => :attachmenttable, :dependent => :destroy
 
   # validation
-  validates :name, :links, :book_id, :presence => true
+  validates :book_id, :presence => true
 end

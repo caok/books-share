@@ -34,8 +34,7 @@ describe Ability do
         it { should_not be_able_to(:destroy, Book.new) }
       end
 
-      context "can not update and destroy the resource" do
-        it { should_not be_able_to(:update, Resource.new) }
+      context "can not destroy the resource" do
         it { should_not be_able_to(:destroy, Resource.new) }
       end
     end
@@ -46,8 +45,7 @@ describe Ability do
         it { should be_able_to(:destroy, member.books.new) }
       end
 
-      context "can update and destroy the resource" do
-        it { should be_able_to(:update, member.resources.new) }
+      context "can destroy the resource" do
         it { should be_able_to(:destroy, member.resources.new) }
       end
     end

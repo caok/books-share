@@ -17,3 +17,4 @@ $ ->
       $("a.go_top").show()
     else
       $("a.go_top").hide()
+
