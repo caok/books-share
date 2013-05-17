@@ -22,7 +22,7 @@ class Ability
     can [:update, :destroy], Book do |book|
       book.user_id == @user.id
     end
-    can [:update, :destroy], Resource do |resource|
+    can :destroy, Resource do |resource|
       resource.user_id == @user.id
     end
   end

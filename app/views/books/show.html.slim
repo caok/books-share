@@ -60,13 +60,13 @@
       table.table.table-striped
         tbody
           - @book.resources.each do |resource|
-            tr
-              td= resource.name
+            tr[id='#{dom_id(resource)}']
+              td= resource.try(:attachment).try(:file_name)
               td
-                b= resource.format
-              td= number_to_human_size resource.file_size
-              td= link_to t("helpers.links.hyperlink"), resource.links.url, class: "btn btn-mini btn-success", target: "_blank"
-              td = link_to 'Destroy', resource, :confirm => 'Are you sure?', :method => :delete
+                b= resource.try(:attachment).try(:file_type)
+              td= number_to_human_size resource.try(:attachment).try(:file_size)
+              td= link_to t("helpers.links.hyperlink"), resource.try(:attachment).try(:attachment).try(:url), class: "btn btn-mini btn-success", target: "_blank"
+              td= link_to '&times;'.html_safe, resource, method: :delete, remote: true, :class => 'close' if can? :destroy, resource
 
     .book-comments
       = render "shared/uyan_js", :su => "/books/#{@book.id}"

@@ -1,29 +1,6 @@
 class ResourcesController < ApplicationController
   load_and_authorize_resource
-  # GET /resources
-  # GET /resources.json
-  def index
-    @resources = Resource.where(book_id: params[:book_id])
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @resources }
-    end
-  end
-
-  # GET /resources/1
-  # GET /resources/1.json
-  def show
-    @resource = Resource.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @resource }
-    end
-  end
-
-  # GET /resources/new
-  # GET /resources/new.json
   def new
     @resource = current_user.resources.new(:book_id => params[:book_id])
 
@@ -33,18 +10,12 @@ class ResourcesController < ApplicationController
     end
   end
 
-  # GET /resources/1/edit
-  def edit
-    @resource = Resource.find(params[:id])
-  end
-
-  # POST /resources
-  # POST /resources.json
   def create
     @resource = current_user.resources.new(params[:resource])
 
     respond_to do |format|
       if @resource.save
+        Attachment.create(:attachment => params[:resource][:file], :attachmenttable => @resource) if params[:resource][:file]
         format.html { redirect_to @resource.book, notice: I18n.t("flash.actions.create.notice") }
         format.json { render json: @resource, status: :created, location: @resource }
       else
@@ -54,31 +25,13 @@ class ResourcesController < ApplicationController
     end
   end
 
-  # PUT /resources/1
-  # PUT /resources/1.json
-  def update
-    @resource = Resource.find(params[:id])
-
-    respond_to do |format|
-      if @resource.update_attributes(params[:resource])
-        format.html { redirect_to @resource, notice: I18n.t("flash.actions.update.notice") }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @resource.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /resources/1
-  # DELETE /resources/1.json
   def destroy
     @resource = Resource.find(params[:id])
     @resource.destroy
 
     respond_to do |format|
-      format.html { redirect_to resources_url }
-      format.json { head :no_content }
+      format.json { head :ok }
+      format.js
     end
   end
 end
