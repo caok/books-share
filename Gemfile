@@ -15,7 +15,7 @@ gem 'likeable'
 gem 'redis'
 # attachment
 gem 'carrierwave'
-#gem 'mini_magick'
+gem 'mini_magick'
 #gem 'mime-types'
 # tag
 gem 'acts-as-taggable-on'
