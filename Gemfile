@@ -1,5 +1,5 @@
-#source 'https://rubygems.org'
-source 'http://ruby.taobao.org/'
+source 'https://rubygems.org'
+#source 'http://ruby.taobao.org/'
 
 gem 'rails', '3.2.12'
 gem 'mysql2', "~> 0.3.12b6"
@@ -11,6 +11,8 @@ gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 gem 'devise'
 gem 'cancan'
+gem 'likeable'
+gem 'redis'
 # attachment
 gem 'carrierwave'
 #gem 'mini_magick'
