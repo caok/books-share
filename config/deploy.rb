@@ -67,3 +67,12 @@ namespace :deploy do
   end
   after "deploy:finalize_update","deploy:symlink_config"
 end
+
+namespace :carrierwave do
+  desc "Symlink the upload files"
+  task :symlink, :roles => [:app] do
+    run "mkdir -p #{shared_path}/uploads && ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
+  end
+end
+
+after 'deploy:update', 'carrierwave:symlink'
