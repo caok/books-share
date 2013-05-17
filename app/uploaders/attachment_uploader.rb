@@ -3,12 +3,12 @@ class AttachmentUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
-  include CarrierWave::MimeTypes
+  #include CarrierWave::MiniMagick
+  #include CarrierWave::MimeTypes
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
-  # include Sprockets::Helpers::RailsHelper
-  # include Sprockets::Helpers::IsolatedHelper
+  include Sprockets::Helpers::RailsHelper
+  include Sprockets::Helpers::IsolatedHelper
 
   CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 
@@ -22,6 +22,13 @@ class AttachmentUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  #def move_to_cache
+    #false
+  #end
+  #def move_to_store
+    #true
+  #end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -30,7 +37,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
-  process :resize_to_fit => [160, 200], :if => :image?
+  #process :resize_to_fit => [160, 200], :if => :image?
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
@@ -56,9 +63,24 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
-  process :set_content_type
-  protected
-  def image?(new_file)
-    new_file.content_type.start_with? 'image'
+  #process :set_content_type
+  #protected
+  #def image?(new_file)
+    #new_file.content_type.start_with? 'image'
+  #end
+
+  # Delete cache garbage
+  #https://github.com/jnicklas/carrierwave/wiki/How-to%3A-Delete-cache-garbage-directories
+  #after :store, :delete_old_tmp_file
+
+  # remember the tmp file
+  def cache!(new_file)
+    super
+    @old_tmp_file = new_file
+    #binding.pry
   end
+
+  #def delete_old_tmp_file(dummy)
+    #@old_tmp_file.try :delete
+  #end
 end

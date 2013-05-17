@@ -14,7 +14,7 @@ gem 'cancan'
 # attachment
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'mime-types'
+#gem 'mime-types'
 # tag
 gem 'acts-as-taggable-on'
 # fulltext search
