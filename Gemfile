@@ -13,7 +13,7 @@ gem 'devise'
 gem 'cancan'
 # attachment
 gem 'carrierwave'
-gem 'mini_magick'
+#gem 'mini_magick'
 #gem 'mime-types'
 # tag
 gem 'acts-as-taggable-on'

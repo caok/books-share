@@ -74,11 +74,10 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   #after :store, :delete_old_tmp_file
 
   # remember the tmp file
-  def cache!(new_file)
-    super
-    @old_tmp_file = new_file
-    #binding.pry
-  end
+  #def cache!(new_file)
+    #super
+    #@old_tmp_file = new_file
+  #end
 
   #def delete_old_tmp_file(dummy)
     #@old_tmp_file.try :delete
