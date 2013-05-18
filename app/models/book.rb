@@ -19,6 +19,24 @@ class Book < ActiveRecord::Base
 
   # instance methods
   def cover_url
-    attachment.try(:attachment).try(:url)
+    attachment.try(:attachment).try(:url) || douban_img
+  end
+
+  class << self
+    def generate(book_info)
+      book = Book.new
+      book.name = book_info[:title]
+      book.ISBN = book_info[:isbn13]
+      book.pages = book_info[:pages]
+      book.publishing_house = book_info[:publisher]
+      book.tag_list = book_info[:tags].join(',') if book_info[:tags]
+      book.author_list = book_info[:author]
+      book.translator_list = book_info[:translator]
+      book.content = book_info[:summary]
+      book.auto_create = true
+      book.douban_img = book_info[:image_url].gsub('spic','mpic')
+      book.save
+      book
+    end
   end
 end

@@ -25,6 +25,7 @@ class Ability
     can :destroy, Resource do |resource|
       resource.user_id == @user.id
     end
+    can [:auto_create, :auto_new], Book
   end
 
   def guest_rules
