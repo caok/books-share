@@ -34,4 +34,14 @@ describe Book do
     book.save
     book.cover_url.should eq book.attachment.attachment.url
   end
+
+  it 'when cover_url is nil , can use douban_img' do
+    book.douban_img = 'http://img3.douban.com/mpic/s24963634.jpg'
+    book.attachment = nil
+    book.cover_url.should eq book.douban_img
+  end
+
+  it 'generate book with douban book info ' do
+    lambda { Book.generate(Mini::Douban.book_api :id=>'21382184') }.should change(Book, :count).by(1)
+  end
 end

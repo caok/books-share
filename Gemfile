@@ -22,7 +22,7 @@ gem 'acts-as-taggable-on'
 # fulltext search
 gem 'thinking-sphinx'
 # douban book api
-gem "mini-douban", "~> 0.0.3"
+gem "mini-douban", "~> 0.0.4"
 gem "xml-simple"
 
 group :assets do
