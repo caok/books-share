@@ -22,8 +22,7 @@ gem 'acts-as-taggable-on'
 # fulltext search
 gem 'thinking-sphinx'
 # douban book api
-gem "mini-douban", "~> 0.0.4"
-gem "xml-simple"
+gem "mini-douban", "~> 0.0.5"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
