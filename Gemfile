@@ -37,6 +37,9 @@ end
 
 group :development do
   gem 'thin'
+  gem 'pry-remote'
+  gem 'pry-stack_explorer'
+  gem 'pry-debugger'
   gem 'pry-nav'
   gem 'quiet_assets'
   gem 'better_errors'
