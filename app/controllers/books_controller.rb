@@ -81,7 +81,7 @@ class BooksController < ApplicationController
   end
 
   def auto_create
-    book_info = Mini::Douban.book_api(:id => params[:douban][:index].to_s)
+    book_info = Mini::Douban.book_api(:id => params[:douban][:index].to_s.strip)
     respond_to do |format|
       unless book_info.respond_to? 'keys'
         flash[:error] = I18n.t('flash.books.actions.auto_create.douban_error')
