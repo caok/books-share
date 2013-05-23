@@ -14,6 +14,12 @@ zh-CN:
         notice: "授权成功。"
       authorization_failed:
         notice: "授权失败。"
+    books:
+      actions:
+        auto_create:
+          success: '自动创建书籍成功'
+          error: '该书已经被创建，不能再次创建。'
+          douban_error: '没有对应的豆瓣书籍。'
 
   helpers:
     actions: "操作"
@@ -53,3 +59,10 @@ zh-CN:
       title: "我的主页"
       add_book: "添加书籍"
       add_plan: "新建计划"
+  books:
+    new:
+      auto_create: "自动创建"
+      handel_create: "手动创建"
+      create_now: "立即创建"
+      create_with_douban: "根据豆瓣图书Id自动创建图书"
+      douban_book_index: "图书ID"

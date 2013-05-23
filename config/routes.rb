@@ -1,7 +1,12 @@
 BooksShare::Application.routes.draw do
   resources :resources
 
-  resources :books
+  resources :books do
+    collection do
+      post 'auto_create' => 'books#auto_create'
+      get 'auto_new'
+    end
+  end
 
   get "home/index"
   get "home/tag_cloud", as: :tag_cloud

@@ -15,6 +15,7 @@
 /log/*.log
 /log/*
 /tmp
+/tags
 
 # Ignore uploads
 /public/uploads

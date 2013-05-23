@@ -1,4 +1,5 @@
 # https://github.com/colszowka/simplecov
+require 'pry'
 require 'simplecov'
 SimpleCov.start 'rails'
 
@@ -25,6 +26,7 @@ RSpec.configure do |config|
 
   # Mix in FactoryGirl methods  
   config.include FactoryGirl::Syntax::Methods
+  config.include Devise::TestHelpers, :type => :controller
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

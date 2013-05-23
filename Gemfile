@@ -21,6 +21,8 @@ gem 'mini_magick'
 gem 'acts-as-taggable-on'
 # fulltext search
 gem 'thinking-sphinx'
+# douban book api
+gem "mini-douban", "~> 0.0.5"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -34,6 +36,9 @@ end
 
 group :development do
   gem 'thin'
+  gem 'pry-remote'
+  gem 'pry-stack_explorer'
+  gem 'pry-debugger'
   gem 'pry-nav'
   gem 'quiet_assets'
   gem 'better_errors'
@@ -46,6 +51,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'jasmine'
   gem 'factory_girl_rails'
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 end
 
 group :test do
