@@ -51,6 +51,13 @@ class BooksController < ApplicationController
     end
   end
 
+  def auto_new
+    respond_to do |format|
+      format.html
+      format.json { render json: {:success=>true} }
+    end
+  end
+
   # GET /books/1/edit
   def edit
     @book = Book.find(params[:id])
@@ -69,6 +76,28 @@ class BooksController < ApplicationController
       else
         format.html { render action: "new" }
         format.json { render json: @book.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def auto_create
+    book_info = Mini::Douban.book_api(:id => params[:douban][:index].to_s.strip)
+    respond_to do |format|
+      unless book_info.respond_to? 'keys'
+        flash[:error] = I18n.t('flash.books.actions.auto_create.douban_error')
+        format.html { render action: "auto_new"}
+        format.json { render json: {status: flash[:error]} }
+      else
+        @book = Book.generate(book_info)
+        if @book.errors.blank?
+          flash[:success] = I18n.t("flash.books.actions.auto_create.success")
+          format.html { redirect_to @book  }
+          format.json { render json: @book, status: :created, location: @book }
+        else
+          flash.now[:error] = I18n.t('flash.books.actions.auto_create.error')
+          format.html { render action: "auto_new" }
+          format.json { render json: book.errors }
+        end
       end
     end
   end

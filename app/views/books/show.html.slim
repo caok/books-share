@@ -15,14 +15,15 @@
           li
             i.icon-remove
             = link_to t('helpers.links.destroy'), @book, method: :delete, data: { confirm: t('helpers.links.confirm') }
-        - if current_user.likes? @book
-          li
-            i.icon-remove
-            = unlike_link_for @book
-        - else
-          li
-            i.icon-edit
-            = like_link_for @book
+        - if current_user
+          - if current_user.likes? @book
+            li
+              i.icon-remove
+              = unlike_link_for @book
+          - else
+            li
+              i.icon-edit
+              = like_link_for @book
   .span9
     header
       h1 = @book.name

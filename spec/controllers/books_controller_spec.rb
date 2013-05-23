@@ -198,4 +198,44 @@ describe BooksController do
       end
     end
   end
+  describe 'GET#auto_new' do
+    context 'when user has not signed in' do
+      it "should be redirect" do
+        get :auto_new
+        response.should redirect_to root_path
+        flash[:alert].should eql(I18n.t('unauthorized.default'))
+      end
+    end
+
+    it 'it can work' do
+      sign_in user
+      get :auto_new
+      response.code.should eq('200')
+    end
+  end
+
+  describe 'Post#auto_create' do
+    context 'when user has not signed in' do
+      it "should be redirect" do
+        post :auto_create, douban: {:index=>21382184}
+        response.should redirect_to root_path
+        flash[:alert].should eql(I18n.t('unauthorized.default'))
+      end
+    end
+
+    context 'when user has signed in' do
+      before(:each){ sign_in user }
+      it "when input index number is not exites" do
+        lambda{
+          post :auto_create, douban: {:index=>0}
+        }.should change(Book, :count).by(0)
+      end
+
+      it "when input right number" do
+        lambda{
+          post :auto_create, douban: {:index=>'23860404'}
+        }.should change(Book, :count).by(1)
+      end
+    end
+  end
 end

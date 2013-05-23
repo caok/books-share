@@ -23,3 +23,54 @@ cloudfoundry: http://book-share.cloudfoundry.com
 * rake ts:configure
 * rake ts:index
 * rake ts:start
+
+## likeable & redis howto
+
+super easy to use likeable and redis
+<br/>
+ubuntu install
+```
+  sudo aptitude install redis-server
+```
+
+How to use likeable
+
+```ruby
+Likeable.setup do |likeable|
+  likeable.redis  = Redis.new
+end
+```
+other useage:
+
+```ruby
+class Comment
+  include Likeable
+
+  # ...
+end
+
+class User
+  include Likeable::UserMethods
+
+  # ...
+end
+
+Likeable.setup do |likeable|
+  likeable.redis   = Redis.new
+end
+
+comment = Comment.find(15)
+comment.like_count                  # => 0
+current_user.like!(comment)         # => #<Likeable::Like ... >
+comment.like_count                  # => 1
+comment.likes                       # => [#<Likeable::Like ... >]
+comment.likes.last.user             # => #<User ... >
+comment.likes.last.created_at       # => Wed Jul 27 19:34:32 -0500 2011
+
+comment.liked_by?(current_user)     # => true
+
+current_user.all_liked(Comment)     # => [#<Comment ...>, ...]
+
+liked_comment = Likeable.find_by_resource_id("Comment", 15)
+liked_comment == comment
+```
