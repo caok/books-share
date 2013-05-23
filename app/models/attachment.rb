@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: attachments
+#
+#  id                   :integer          not null, primary key
+#  attachmenttable_type :string(255)
+#  attachmenttable_id   :integer
+#  attachment           :string(255)
+#  file_name            :string(255)
+#  file_size            :string(255)
+#  file_type            :string(255)
+#
+
 class Attachment < ActiveRecord::Base
   attr_accessible :attachment, :attachmenttable_id, :attachmenttable_type, :attachmenttable
 

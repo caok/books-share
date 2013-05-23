@@ -23,6 +23,7 @@ cloudfoundry: http://book-share.cloudfoundry.com
 * rake ts:configure
 * rake ts:index
 * rake ts:start
+
 ## likeable & redis howto
 
 super easy to use likeable and redis

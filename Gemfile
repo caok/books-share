@@ -51,6 +51,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'jasmine'
   gem 'factory_girl_rails'
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 end
 
 group :test do
