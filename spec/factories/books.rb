@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: books
+#
+#  id               :integer          not null, primary key
+#  name             :string(255)
+#  publishing_house :string(255)
+#  pages            :integer
+#  ISBN             :string(255)
+#  content          :text
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  user_id          :integer
+#  douban_img       :string(255)
+#  auto_create      :boolean          default(FALSE)
+#
+
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
