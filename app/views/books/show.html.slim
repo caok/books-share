@@ -18,11 +18,11 @@
         - if current_user
           - if current_user.likes? @book
             li
-              i.icon-remove
+              i.icon-star-empty
               = unlike_link_for @book
           - else
             li
-              i.icon-edit
+              i.icon-star
               = like_link_for @book
   .span9
     header
@@ -74,7 +74,7 @@
                 b= resource.try(:attachment).try(:file_type)
               td= number_to_human_size resource.try(:attachment).try(:file_size)
               td= link_to t("helpers.links.hyperlink"), resource.try(:attachment).try(:attachment).try(:url), class: "btn btn-mini btn-success", target: "_blank"
-              td= link_to '&times;'.html_safe, resource, method: :delete, remote: true, :class => 'close' if can? :destroy, resource
+              td= link_to '&times;'.html_safe, resource, method: :delete, data: { confirm: t('helpers.links.confirm') }, remote: true, :class => 'close' if can? :destroy, resource
 
     .book-comments
       = render "shared/uyan_js", :su => "/books/#{@book.id}"
