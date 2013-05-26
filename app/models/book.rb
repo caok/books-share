@@ -16,7 +16,6 @@
 #
 
 class Book < ActiveRecord::Base
-  include Likeable
   # attributes
   attr_accessible :ISBN, :content, :name, :pages, :publishing_house, :tag_list, :author_list, :translator_list, :cover
   attr_accessor :tag_list, :author_list, :translator_list, :cover

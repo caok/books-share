@@ -11,8 +11,6 @@ gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 gem 'devise'
 gem 'cancan'
-gem 'likeable'
-gem 'redis'
 # attachment
 gem 'carrierwave'
 gem 'mini_magick'
@@ -36,10 +34,10 @@ end
 
 group :development do
   gem 'thin'
+  gem 'pry'
   gem 'pry-remote'
   gem 'pry-stack_explorer'
   gem 'pry-debugger'
-  gem 'pry-nav'
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'

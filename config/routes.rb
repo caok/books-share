@@ -16,8 +16,6 @@ BooksShare::Application.routes.draw do
   get 'translators/:translator', to: 'books#index', as: :translator
 
   match "/search" => "search#index", :as => :search
-  delete 'likes/:resource_name/:resource_id' => "likes#destroy", :as => 'like'
-  post 'likes/:resource_name/:resource_id' => "likes#create",  :as => 'like'
 
   devise_for :users
 
