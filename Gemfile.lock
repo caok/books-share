@@ -7,7 +7,7 @@ GIT
       rake (>= 0.8.7)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://ruby.taobao.org/
   specs:
     actionmailer (3.2.12)
       actionpack (= 3.2.12)
@@ -124,13 +124,7 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    keytar (1.5.3)
-      activesupport
     kgio (2.8.0)
-    likeable (0.1.2)
-      activesupport
-      keytar (>= 1.5.2)
-      redis
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -201,7 +195,6 @@ GEM
     rake (10.0.3)
     rdoc (3.12.2)
       json (~> 1.4)
-    redis (3.0.3)
     riddle (1.5.6)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
@@ -306,7 +299,6 @@ DEPENDENCIES
   jasmine
   jquery-rails
   kaminari
-  likeable
   meta_request
   mini-douban (~> 0.0.5)
   mini_magick
@@ -318,7 +310,6 @@ DEPENDENCIES
   pry-stack_explorer
   quiet_assets
   rails (= 3.2.12)
-  redis
   rspec-rails
   sass-rails (~> 3.2.3)
   simple_form
