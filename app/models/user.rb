@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
   # assocation
   has_many :books
   has_many :resources
+  acts_as_follower
 
   ##############
   # validation #

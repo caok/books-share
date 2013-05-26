@@ -40,6 +40,7 @@ GEM
       rails (~> 3.0)
     acts_as_follower (0.1.1)
     arel (3.0.2)
+    awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
     better_errors (0.7.2)
       coderay (>= 1.0.0)
@@ -283,6 +284,7 @@ DEPENDENCIES
   acts-as-taggable-on
   acts_as_follower
   annotate!
+  awesome_print
   better_errors
   binding_of_caller
   bootstrap-sass

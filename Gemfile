@@ -34,6 +34,7 @@ group :assets do
 end
 
 group :development do
+  gem 'awesome_print'
   gem 'thin'
   gem 'pry'
   gem 'pry-remote'
