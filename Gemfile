@@ -11,6 +11,7 @@ gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 gem 'devise'
 gem 'cancan'
+gem 'acts_as_follower'
 # attachment
 gem 'carrierwave'
 gem 'mini_magick'
