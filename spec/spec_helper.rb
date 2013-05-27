@@ -1,5 +1,4 @@
 # https://github.com/colszowka/simplecov
-require 'pry'
 require 'simplecov'
 SimpleCov.start 'rails'
 
