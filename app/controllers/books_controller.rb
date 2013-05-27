@@ -87,7 +87,7 @@ class BooksController < ApplicationController
         format.html { render action: "auto_new", alert: I18n.t('flash.books.actions.auto_create.douban_error') }
         format.json { render json: {status: flash[:error]} }
       else
-        @book = Book.generate(book_info)
+        @book = current_user.books.generate(book_info)
         if @book.errors.blank?
           format.html { redirect_to @book, notice: I18n.t("flash.books.actions.auto_create.success") }
           format.json { render json: @book, status: :created, location: @book }

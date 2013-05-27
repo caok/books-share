@@ -26,6 +26,9 @@
   .span9
     header
       h1 = @book.name
+      p.text-right
+        =link_to @book.try(:user).try(:name), @book.user
+        = "于#{time_ago_in_words @book.created_at}前发布"
 
     .book-detail
       table.table.table-striped.table-bordered

@@ -17,10 +17,10 @@
                   .desc
                     = strip_tags(book.name).truncate(15, omission: '...')
   .span3
-    = link_to t('.add_book'), auto_new_books_path,
+    = link_to t('home.index.add_book'), auto_new_books_path,
               :class => 'btn btn-primary' if can? :create, Book
     '
-    = link_to t('.add_plan'), '',
+    = link_to t('home.index.add_plan'), '',
               :class => 'btn btn-success'
     hr
     .well
