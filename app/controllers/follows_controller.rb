@@ -7,7 +7,7 @@ class FollowsController < ApplicationController
 
   def destroy
     current_user.stop_following @book
-    redirect_to :back, :notice => 'success' 
+    redirect_to :back, :notice => 'success'
   end
   private
   def find_book

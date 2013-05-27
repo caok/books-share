@@ -22,6 +22,8 @@ gem 'acts-as-taggable-on'
 gem 'thinking-sphinx'
 # douban book api
 gem "mini-douban", "~> 0.0.5"
+# create pretty URL
+gem 'friendly_id'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
