@@ -1,0 +1,27 @@
+.row
+  .span9
+    .page-header
+      h2= t('.title')
+      .well
+        h4 看书计划
+        p ......
+      .well
+        h4 收藏书籍
+        ul.thumbnails
+          - if @user.present?
+            - @user.books.each do |book|
+              li.book-each.span2
+                .thumbnail
+                  a{href="#{book_path(book)}"}
+                    = image_tag(book.cover_url)
+                  .desc
+                    = strip_tags(book.name).truncate(15, omission: '...')
+  .span3
+    = link_to t('.add_book'), auto_new_books_path,
+              :class => 'btn btn-primary' if can? :create, Book
+    '
+    = link_to t('.add_plan'), '',
+              :class => 'btn btn-success'
+    hr
+    .well
+      p 个人信息

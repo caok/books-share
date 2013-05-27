@@ -1,5 +1,6 @@
 BooksShare::Application.routes.draw do
   resources :resources
+
   resources :follows, only: [:create, :destroy]
 
   resources :books do
@@ -9,14 +10,12 @@ BooksShare::Application.routes.draw do
     end
   end
 
-  get "home/index"
-  get "home/tag_cloud", as: :tag_cloud
+  get 'home/index'
+  get 'home/tag_cloud', as: :tag_cloud
 
   get 'tags/:tag', to: 'books#index', as: :tag
   get 'authors/:author', to: 'books#index', as: :author
   get 'translators/:translator', to: 'books#index', as: :translator
-
-  match "/search" => "search#index", :as => :search
 
   devise_for :users
 
@@ -28,6 +27,8 @@ BooksShare::Application.routes.draw do
     root :to => 'books#index'
     get 'account' => 'registrations#edit', :as => 'account'
   end
+
+  resources :users, :path => '/u', :only => [:show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
