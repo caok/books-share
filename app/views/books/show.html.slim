@@ -23,6 +23,7 @@
             - else
               i.icon-star
               = link_to t('helpers.follow.like'), follows_path(@book, id: @book), method: :post 
+            a.social-count= @book.followers_count
   .span9
     header
       h1 = @book.name
