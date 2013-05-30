@@ -51,6 +51,12 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def book_follow_info(book)
+    entry = [ book.followers_count, t('views.follow.state'), false ]
+    entry[2] = true if current_user.try(:following?, book)
+    entry.to_json
+  end
+
   MOBILE_USER_AGENTS =  'palm|blackberry|nokia|phone|midp|mobi|symbian|chtml|ericsson|minimo|' +
                         'audiovox|motorola|samsung|telit|upg1|windows ce|ucweb|astel|plucker|' +
                         'x320|x240|j2me|sgh|portable|sprint|docomo|kddi|softbank|android|mmp|' +

@@ -1,5 +1,5 @@
 - model_class = Book
-.row-fluid.book
+.row-fluid.book ng-init="book.id=#{@book.id}" 
   .span3
     .book-sidebar
       .book-cover
@@ -10,20 +10,27 @@
         -if can? :update, @book
           li
             i.icon-edit
+            |&nbsp;
             = link_to t('helpers.links.edit'), edit_book_path(@book)
         -if can? :destroy, @book
           li
             i.icon-remove
+            |&nbsp;
             = link_to t('helpers.links.destroy'), @book, method: :delete, data: { confirm: t('helpers.links.confirm') }
-        li
-          - if current_user
-            - if current_user.following?(@book)
-              i.icon-star-empty
-              = link_to t('helpers.follow.unlike'), follow_path(@book), method: :delete
-            - else
-              i.icon-star
-              = link_to t('helpers.follow.like'), follows_path(@book, id: @book), method: :post 
-            a.social-count= @book.followers_count
+        li ng-controller='FollowsCtrl' ng-init='init(#{book_follow_info(@book)})'
+          a ng-href='{{href}}' ng-click='follow()' ng-class='{disabled: disabled}'
+            i ng-class="{true: 'icon-star', false: 'icon-star-empty'}[followed]"
+            |&nbsp;{{labels[followed]}}
+          a.social-count {{count}}
+          /*- if current_user*/
+            /*- if current_user.following?(@book)*/
+              /*i.icon-star-empty*/
+              /*= link_to t('helpers.follow.unlike'), follow_path(@book), method: :delete*/
+            /*- else*/
+              /*i.icon-star*/
+              /*= link_to t('helpers.follow.like'), follows_path(@book, id: @book), method: :post */
+            /*a.social-count= @book.followers_count*/
+
   .span9
     header
       h1 = @book.name

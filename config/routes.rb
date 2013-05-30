@@ -8,6 +8,10 @@ BooksShare::Application.routes.draw do
       post 'auto_create' => 'books#auto_create'
       get 'auto_new'
     end
+    member do
+      post 'follow'
+      post 'unfollow'
+    end
   end
 
   get 'home/index'
