@@ -12,3 +12,55 @@ a.go_top {
   bottom: 15px;
   right: 15px;
 }
+
+a {
+  &.social-count {
+    position: relative;
+    display: inline-block;
+    padding: 0 7px 0;
+    margin-left: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 28px;
+    color: #333;
+    vertical-align: middle;
+    background-color: #fafafa;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+  }
+
+  &.social-count:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: 6px solid #bbb;
+    border-color: transparent #bbb transparent transparent;
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    margin-top: -6px;
+    margin-right: 0;
+  }
+
+  &.social-count:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: 6px solid #fafafa;
+    border-color: transparent #fafafa transparent transparent;
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    margin-top: -6px;
+    margin-right: -1px;
+  }
+
+  &.disabled {
+    color: grey;
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
+}

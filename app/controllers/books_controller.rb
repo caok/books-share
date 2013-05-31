@@ -130,4 +130,16 @@ class BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def follow
+    book = Book.find(params[:id])
+    current_user.follow book
+    render json: { count: book.followers_count }
+  end
+
+  def unfollow
+    book = Book.find(params[:id])
+    current_user.stop_following book
+    render json: { count: book.followers_count }
+  end
 end

@@ -1,5 +1,6 @@
 #= require jquery
 #= require jquery_ujs
+#= require angularjs
 #= require bootstrap-custom
 #= require rails.validations
 #= require rails.validations.simple_form

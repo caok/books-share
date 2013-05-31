@@ -40,9 +40,6 @@ zh-CN:
       hyperlink: "链接"
       grant_permission: "授予权限"
       add_resource: "追加资源"
-    follow:
-      like: "收藏"
-      unlike: "取消收藏"
 
   users:
     show:

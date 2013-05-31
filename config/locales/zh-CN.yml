@@ -14,6 +14,10 @@ zh-CN:
       first: "首页"
       last: "末页"
       truncate: "..."
+    follow:
+      state:
+        false: "收藏"
+        true: "已收藏"
 
   layout:
     holder: "Caok"
