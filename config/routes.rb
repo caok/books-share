@@ -1,8 +1,6 @@
 BooksShare::Application.routes.draw do
   resources :resources
 
-  resources :follows, only: [:create, :destroy]
-
   resources :books do
     collection do
       post 'auto_create' => 'books#auto_create'

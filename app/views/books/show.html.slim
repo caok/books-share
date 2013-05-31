@@ -22,15 +22,6 @@
             i ng-class="{true: 'icon-star', false: 'icon-star-empty'}[followed]"
             |&nbsp;{{labels[followed]}}
           a.social-count {{count}}
-          /*- if current_user*/
-            /*- if current_user.following?(@book)*/
-              /*i.icon-star-empty*/
-              /*= link_to t('helpers.follow.unlike'), follow_path(@book), method: :delete*/
-            /*- else*/
-              /*i.icon-star*/
-              /*= link_to t('helpers.follow.like'), follows_path(@book, id: @book), method: :post */
-            /*a.social-count= @book.followers_count*/
-
   .span9
     header
       h1 = @book.name

@@ -6,7 +6,7 @@
         h4 看书计划
         p ......
       .well
-        h4 收藏书籍
+        h4 发布书籍(#{@user.books.count})
         ul.thumbnails
           - if @user.present?
             - @user.books.each do |book|
@@ -16,12 +16,17 @@
                     = image_tag(book.cover_url)
                   .desc
                     = strip_tags(book.name).truncate(15, omission: '...')
+      .well
+        h4 收藏书籍(#{@user.follow_count})
+        ul.thumbnails
+          - if @user.present?
+            - @user.following_by_type('Book').each do |book|
+              li.book-each.span2
+                .thumbnail
+                  a{href="#{book_path(book)}"}
+                    = image_tag(book.cover_url)
+                  .desc
+                    = strip_tags(book.name).truncate(15, omission: '...')
   .span3
-    = link_to t('home.index.add_book'), auto_new_books_path,
-              :class => 'btn btn-primary' if can? :create, Book
-    '
-    = link_to t('home.index.add_plan'), '',
-              :class => 'btn btn-success'
-    hr
     .well
       p 个人信息
