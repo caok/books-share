@@ -26,7 +26,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-      asset_path('default_avatar.jpg')
+      'default_avatar.jpg'
    end
 
   # Process files as they are uploaded:
@@ -38,7 +38,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
    version :thumb do
-     process :scale => [30, 30]
+     #process :scale => [30, 30]
+     process :resize_to_fill => [30, 30]
    end
 
   # Add a white list of extensions which are allowed to be uploaded.
