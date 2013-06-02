@@ -35,6 +35,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :login
   attr_accessor :login
+  
+  # load carrierwave 
+  mount_uploader :avatar, ImageUploader
 
   # assocation
   has_many :books
