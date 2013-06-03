@@ -245,29 +245,30 @@ describe BooksController do
     end
   end
 
-  #describe 'Post#follow' do
-    #let!(:book) { create :book, user: user}
-    #before(:each) do
-      #sign_in user
-      #current_user = user
-    #end
-    ##before {controller.stub!(:current_user).and_return(user)}
-    #context "post#create" do
-      #it "should create link" do
-        #user.should == current_user
-        #expect do
-          #post :follow, id: book.id
-        #end.to change { book.followers_count }.by(1)
-      #end
-    #end
+  describe 'Post#follow' do
+    before(:each) do
+      sign_in user
+      controller.stub(:current_user).and_return(user)
+    end
 
-    #context "delete#destroy" do
-      #it "destroy the current user like" do
-        #user.follow book
-        #expect do
+    # have some problem here
+    context "post#follow" do
+      it "should add followers_count" do
+        expect do
+          #post :follow, id: book.id
+          user.follow book
+        end.to change { book.reload.followers_count }.by(1)
+      end
+    end
+
+    context "post#unfollow" do
+      it "should reduce followers_count" do
+        user.follow book
+        expect do
           #post :unfollow, id: book.id
-        #end.to change { book.followers_count }.by(-1)
-      #end
-    #end
-  #end
+          user.stop_following book
+        end.to change { book.followers_count }.by(-1)
+      end
+    end
+  end
 end

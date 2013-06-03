@@ -1,3 +1,4 @@
+#encoding:utf-8
 require 'spec_helper'
 
 describe ApplicationHelper do
@@ -108,5 +109,12 @@ describe ApplicationHelper do
         end
       end
     end
+  end
+
+  describe "book_follow_info" do
+    before { helper.stub :current_user, nil }
+    let(:book) { create :book }
+    subject { helper.book_follow_info(book) }
+    it { should eql [0, { false: '收藏' , true: '已收藏' }, false].to_json }
   end
 end
