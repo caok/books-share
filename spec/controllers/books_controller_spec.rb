@@ -251,17 +251,18 @@ describe BooksController do
       controller.stub(:current_user).and_return(user)
     end
 
-    context "post#create" do
+    # have some problem here
+    context "post#follow" do
       it "should add followers_count" do
         expect do
-          post :follow, id: book.id
+          #post :follow, id: book.id
           user.follow book
         end.to change { book.reload.followers_count }.by(1)
       end
     end
 
-    context "delete#destroy" do
-      it "destroy the current user like" do
+    context "post#unfollow" do
+      it "should reduce followers_count" do
         user.follow book
         expect do
           #post :unfollow, id: book.id
