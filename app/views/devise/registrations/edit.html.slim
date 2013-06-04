@@ -5,11 +5,7 @@
 
     .form-inputs
       = f.input :name
-      label class='string required control-label' for='user_avatar' 头像
-      .controls
-        = image_tag(resource.avatar_url) if resource.avatar?
-        = f.file_field :avatar
-        = f.hidden_field :avatar_cache
+      = f.input :avatar, :as => :file
       = f.input :email
       = f.input :password, :hint => t('devise.views.registrations.edit.change_pass_tip'), :input_html => { :autocomplete => 'off' }
       = f.input :password_confirmation

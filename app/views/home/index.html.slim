@@ -35,4 +35,9 @@
               :class => 'btn btn-success'
     hr
     .well
+      .avatar_box= image_tag(current_user.avatar_url)
+      hr
       p 个人信息
+      ul.user-info.unstyled.muted
+        li = "姓名: #{current_user.name}"
+        li = "邮箱: #{current_user.email}"

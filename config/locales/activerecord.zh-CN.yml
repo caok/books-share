@@ -8,6 +8,7 @@ zh-CN:
       user:
         login: "登录名"
         name: "用户名"
+        avatar: "头像"
         email: "Email"
         password: "密码"
         roles_mask: "角色"

@@ -1,0 +1,15 @@
+img.menu-avatar {
+  border-radius: 20px;
+  box-shadow: 0px 0px 6px hsla(0, 27%, 42%, 0.5);
+  width: 25px;
+}
+
+.avatar_box {
+  text-align:center;
+  padding-bottom: 10px;
+  img {
+    border-radius: 20px;
+    box-shadow: 0px 0px 6px hsla(0, 27%, 42%, 0.5);
+    width: 100px;
+  }
+}
