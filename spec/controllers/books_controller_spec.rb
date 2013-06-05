@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pry'
 
 describe BooksController do
   let(:user) { create :member_user }
