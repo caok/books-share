@@ -1,12 +1,10 @@
 ## books-share [![Build Status](https://travis-ci.org/caok/books-share.png?branch=master)](https://travis-ci.org/caok/books-share)
-This is the source code of [books-share](http://book-share.cloudfoundry.com).
+This is the source code of [books-share](http://198.199.86.209:9000)
 
 ## Take a look
 vps: http://book.nyepoch.com
 <br/>
 vps(ip): http://198.199.86.209:9000
-<br/>
-cloudfoundry: http://book-share.cloudfoundry.com
 
 ## Requirements
 

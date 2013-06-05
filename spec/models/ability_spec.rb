@@ -25,6 +25,10 @@ describe Ability do
     subject { Ability.new(member) }
 
     it { should be_able_to(:create, Book) }
+    it { should be_able_to(:follow, Book) }
+    it { should be_able_to(:unfollow, Book) }
+    it { should be_able_to(:auto_create, Book) }
+    it { should be_able_to(:auto_new, Book) }
     it { should be_able_to(:create, Resource) }
     it { should be_able_to(:manage, Attachment) }
 
