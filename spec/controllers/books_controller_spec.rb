@@ -1,8 +1,11 @@
 require 'spec_helper'
+require 'pry'
 
 describe BooksController do
   let(:user) { create :member_user }
+  let(:admin) { create :admin_user }
   let(:book) { create :book, :user => user }
+  let(:admin_book) { create :book, :user => admin }
 
   describe "GET#index" do
     it "should have an index action" do
@@ -247,27 +250,24 @@ describe BooksController do
 
   describe 'Post#follow' do
     before(:each) do
-      sign_in user
-      controller.stub(:current_user).and_return(user)
+      sign_in admin
     end
 
     # have some problem here
     context "post#follow" do
       it "should add followers_count" do
         expect do
-          #post :follow, id: book.id
-          user.follow book
-        end.to change { book.reload.followers_count }.by(1)
+          post :follow, id: admin_book.id
+        end.to change { admin_book.followers_count }.by(1)
       end
     end
 
     context "post#unfollow" do
       it "should reduce followers_count" do
-        user.follow book
+        admin.follow admin_book
         expect do
-          #post :unfollow, id: book.id
-          user.stop_following book
-        end.to change { book.followers_count }.by(-1)
+          post :unfollow, id: admin_book.id
+        end.to change { admin_book.followers_count }.by(-1)
       end
     end
   end
