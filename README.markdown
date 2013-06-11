@@ -24,5 +24,5 @@ vps(ip): http://198.199.86.209:9000
 
 ## Changed Log
 
-06/11/2013 redeploy vps with the avatar uploaded
+06/11/2013 redeploy vps with the avatar uploaded<br/>
 ![avatar](https://f.cloud.github.com/assets/83296/636756/de67749a-d28f-11e2-92fd-0311b1a680de.png)
