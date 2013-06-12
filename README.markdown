@@ -13,6 +13,7 @@ vps(ip): http://198.199.86.209:9000
 * rbenv
 * sphinxsearch
 * nodejs
+* pdf2htmlEX
 
 ## development setup
 * sudo apt-get install sphinxsearch
@@ -21,3 +22,9 @@ vps(ip): http://198.199.86.209:9000
 * rake ts:configure
 * rake ts:index
 * rake ts:start
+
+## install pdf2htmlEx
+* sudo add-apt-repository ppa:coolwanglu/pdf2htmlex
+* sudo apt-get update
+* sudo apt-get install pdf2htmlEX
+* pdf2htmlEX -v
