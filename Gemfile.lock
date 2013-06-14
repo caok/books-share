@@ -306,6 +306,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   meta_request
+  mime-types
   mini-douban (~> 0.0.5)
   mini_magick
   mysql2 (~> 0.3.12b6)

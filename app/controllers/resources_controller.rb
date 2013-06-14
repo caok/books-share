@@ -34,4 +34,13 @@ class ResourcesController < ApplicationController
       format.js
     end
   end
+
+  def pdf2html
+    @resource = Resource.find(params[:id])
+    pdf_url = "public" + @resource.download_link
+    html_url = "public" + @resource.pdf2html_link
+    `pdf2htmlEX "#{pdf_url}" "#{html_url}"`
+    @resource.update_attributes(:transformed => true)
+    redirect_to :back
+  end
 end

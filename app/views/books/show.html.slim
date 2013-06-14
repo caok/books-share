@@ -74,7 +74,11 @@
               td
                 b= resource.try(:attachment).try(:file_type)
               td= number_to_human_size resource.try(:attachment).try(:file_size)
-              td= link_to t("helpers.links.hyperlink"), resource.try(:attachment).try(:attachment).try(:url), class: "btn btn-mini btn-success", target: "_blank"
+              td= link_to t("helpers.links.hyperlink"), resource.download_link, class: "btn btn-mini btn-success", target: "_blank"
+              - if resource.transformed
+                td= link_to t('helpers.links.read'), resource.pdf2html_link, class: "btn btn-info btn-mini", target: "_blank"
+              - else
+                td= link_to t('helpers.links.transform'), pdf2html_resource_path(resource), method: :put, class: "btn btn-danger btn-mini", data: { confirm: t('helpers.links.confirm') } if can? :pdf2html, resource
               td= link_to '&times;'.html_safe, resource, method: :delete, data: { confirm: t('helpers.links.confirm') }, remote: true, :class => 'close' if can? :destroy, resource
 
     .book-comments

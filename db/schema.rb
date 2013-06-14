@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602213016) do
+ActiveRecord::Schema.define(:version => 20130612155055) do
 
   create_table "attachments", :force => true do |t|
     t.string  "attachmenttable_type"
@@ -52,9 +52,10 @@ ActiveRecord::Schema.define(:version => 20130602213016) do
 
   create_table "resources", :force => true do |t|
     t.integer  "book_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "user_id"
+    t.boolean  "transformed", :default => false
   end
 
   add_index "resources", ["book_id"], :name => "index_resources_on_book_id"

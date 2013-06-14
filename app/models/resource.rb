@@ -10,7 +10,7 @@
 #
 
 class Resource < ActiveRecord::Base
-  attr_accessible :book_id, :file
+  attr_accessible :book_id, :file, :transformed
   attr_accessor :file
 
   # assocation
@@ -20,4 +20,13 @@ class Resource < ActiveRecord::Base
 
   # validation
   validates :book_id, :presence => true
+
+  # instance methods
+  def download_link
+    try(:attachment).try(:attachment).try(:url)
+  end
+
+  def pdf2html_link
+    download_link.blank? ? '' : download_link.gsub(/.[pP][dD][fF]/, '.html')
+  end
 end
