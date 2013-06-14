@@ -28,3 +28,10 @@ vps(ip): http://198.199.86.209:9000
 * sudo apt-get update
 * sudo apt-get install pdf2htmlEX
 * pdf2htmlEX -v
+=======
+## Changed Log
+
+06/11/2013 redeploy vps with the avatar uploaded<br/>
+![avatar](https://f.cloud.github.com/assets/83296/636756/de67749a-d28f-11e2-92fd-0311b1a680de.png)
+
+06/14/2013 add read online function<br/>
