@@ -29,4 +29,12 @@ class Resource < ActiveRecord::Base
   def pdf2html_link
     download_link.blank? ? '' : download_link.gsub(/.[pP][dD][fF]/, '.html')
   end
+
+  def book_name
+    try(:book).try(:name)
+  end
+
+  def post_by
+    try(:user).try(:name)
+  end
 end

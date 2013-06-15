@@ -53,6 +53,9 @@ zh-CN:
   tags:
     index:
       title: "分类"
+  resources:
+    read:
+      title: "阅读"
   home:
     index:
       title: "我的主页"
