@@ -24,6 +24,7 @@ vps(ip): http://198.199.86.209:9000
 * rake ts:start
 
 ## install pdf2htmlEx
+* sudo apt-get install python-software-properties
 * sudo add-apt-repository ppa:coolwanglu/pdf2htmlex
 * sudo apt-get update
 * sudo apt-get install pdf2htmlEX
