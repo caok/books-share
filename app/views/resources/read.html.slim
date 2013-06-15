@@ -1,0 +1,15 @@
+.row
+  .span12
+    header
+      h3= @resource.book_name
+      p.text-right
+        =link_to "全屏阅读", @resource.pdf2html_link
+    iframe#reading width="100%" src="#{@resource.pdf2html_link}"
+
+javascript:
+  window.onload=fnInit;
+    window.onresize=fnInit;
+    function fnInit(){
+      var iframe_height = document.body.clientHeight - 300;
+      document.getElementById('reading').style.height= iframe_height + "px";
+    }

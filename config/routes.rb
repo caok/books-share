@@ -1,6 +1,7 @@
 BooksShare::Application.routes.draw do
   resources :resources do
     put 'pdf2html', :on => :member
+    get 'read', :on => :member
   end
 
   resources :books do

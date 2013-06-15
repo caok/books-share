@@ -43,4 +43,8 @@ class ResourcesController < ApplicationController
     @resource.update_attributes(:transformed => true)
     redirect_to :back
   end
+
+  def read
+    @resource = Resource.find(params[:id])
+  end
 end
