@@ -23,7 +23,7 @@ class Resource < ActiveRecord::Base
 
   # instance methods
   def download_link
-    try(:attachment).try(:attachment).try(:url)
+    try(:attachment).try(:attachment).try(:url) || ''
   end
 
   def pdf2html_link
