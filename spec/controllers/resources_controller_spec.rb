@@ -92,4 +92,29 @@ describe ResourcesController do
       end
     end
   end
+
+  describe "GET#read" do
+    it "should have an read action" do
+      get :read, :id => resource
+      response.should be_success
+      assigns(:resource).should eq(resource)
+    end
+  end
+
+  describe "PUT#pdf2html" do
+    let(:admin) { create :admin_user }
+    it "can not pdf2html" do
+     expect {
+       put :pdf2html, id: resource
+     }.to_not change{resource.transformed}.from(false).to(true)
+    end
+
+    it "can pdf2html" do
+      #sign_in admin
+      #request.env['HTTP_REFERER'] = 'http://test.com/sessions/new'
+      #expect {
+        #put :pdf2html, id: resource
+      #}.to change{resource.transformed}.from(false).to(true)
+    end
+  end
 end
