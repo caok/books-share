@@ -39,9 +39,6 @@ end
 group :development do
   gem 'awesome_print'
   gem 'thin'
-  gem 'pry'
-  gem 'pry-remote'
-  gem 'pry-stack_explorer'
   gem 'pry-debugger'
   gem 'quiet_assets'
   gem 'better_errors'
