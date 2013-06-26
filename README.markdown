@@ -16,8 +16,9 @@ vps(ip): http://198.199.86.209:9000
 * pdf2htmlEX
 
 ## development setup
-* sudo apt-get install sphinxsearch
-* sudo apt-get install nodejs
+* rename /config/databse.yml.example to /config/databse.yml
+* sudo apt-get install sphinxsearch (mac: brew install sphinx --mysql )
+* sudo apt-get install nodejs (mac: brew install node)
 * rake db:setup
 * rake ts:configure
 * rake ts:index
