@@ -46,5 +46,6 @@ class ResourcesController < ApplicationController
 
   def read
     @resource = Resource.find(params[:id])
+    render layout: false
   end
 end
