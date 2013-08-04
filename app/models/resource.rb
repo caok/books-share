@@ -37,4 +37,8 @@ class Resource < ActiveRecord::Base
   def post_by
     try(:user).try(:name)
   end
+
+  def can_read_online?
+    try(:attachment).type == "pdf"
+  end
 end

@@ -70,13 +70,14 @@
         tbody
           - @book.resources.each do |resource|
             tr[id='#{dom_id(resource)}']
-              td= resource.try(:attachment).try(:file_name)
+              td= truncate resource.try(:attachment).try(:file_name)
               td
-                b= resource.try(:attachment).try(:file_type)
+                /*b= resource.try(:attachment).try(:file_type)*/
+                b= resource.try(:attachment).try(:type)
               td= number_to_human_size resource.try(:attachment).try(:file_size)
               / td= link_to t("helpers.links.hyperlink"), resource.download_link, class: "btn btn-mini btn-success", target: "_blank"
               / - if resource.transformed
-              td= link_to t('helpers.links.read'), read_resource_path(resource), class: "btn btn-info btn-mini", target: "_blank"
+              td= link_to t('helpers.links.read'), read_resource_path(resource), class: "btn btn-info btn-mini", target: "_blank" if resource.can_read_online?
               / - else
               /   td= link_to t('helpers.links.transform'), pdf2html_resource_path(resource), method: :put, class: "btn btn-danger btn-mini", data: { confirm: t('helpers.links.confirm') } if can? :pdf2html, resource
               td= link_to '&times;'.html_safe, resource, method: :delete, data: { confirm: t('helpers.links.confirm') }, remote: true, :class => 'close' if can? :destroy, resource
