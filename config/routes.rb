@@ -35,6 +35,14 @@ BooksShare::Application.routes.draw do
 
   resources :users, :path => '', :only => [:show]
 
+  resources :weibo, :only=>[] do
+    collection do
+      get 'connect'
+      get 'callback'
+      get 'logout'
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -35,8 +35,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :login, :avatar, :avatar_cache
   attr_accessor :login
-  
-  # load carrierwave 
+
+  # load carrierwave
   mount_uploader :avatar, ImageUploader
 
   # assocation
@@ -80,6 +80,33 @@ class User < ActiveRecord::Base
     !(roles & a.map{|i| i.to_s}).empty?
   end
 
+  def avatar_warper(type=nil)
+    if avatar.url == avatar.default_url && profile_image_url
+      profile_image_url
+    else
+      type.nil? ?  avatar.url : avatar.send(type).url
+    end
+  end
+
+  class << self
+    def find_or_generate(sina_user)
+      user = User.where(:uid=>sina_user['id']).first
+      return user if user
+      user = User.new
+      user.name = sina_user['name']
+      user.uid = sina_user['id']
+      user.description = sina_user['description']
+      user.profile_image_url = sina_user['profile_image_url']
+      user.password = 'book-share'
+      user.password_confirmation = 'book-share'
+      user.email = generate_a_email
+      user.save!
+      user
+    end
+  end
+
+
+
   private
   # https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address
   def self.find_first_by_auth_conditions(warden_conditions)
@@ -89,5 +116,9 @@ class User < ActiveRecord::Base
     else
       where(conditions).first
     end
+  end
+
+  def self.generate_a_email
+    ('a'..'z').to_a.shuffle.first(6).join()+Time.now.to_i.to_s+'@example.com'
   end
 end
