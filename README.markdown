@@ -6,7 +6,7 @@ vps: http://book.nyepoch.com
 <br/>
 vps(ip): http://198.199.86.209:9000
 <br/>
-<最新代码> http://weidaxue.me:4000/
+<最新代码> http://tao.weidaxue.me
 
 ## Requirements
 
