@@ -29,9 +29,23 @@ class Attachment < ActiveRecord::Base
   def set_attachment_attributes
     if attachment.present? && attachment_changed?
       self.file_name = File.basename(attachment.file.identifier, '.*').titleize
-      self.file_type = attachment.file.content_type
+      self.file_type = attachment.file.content_type.downcase
       self.file_size = attachment.file.size
     end
   end
   protected :set_attachment_attributes
+
+  # instance methods
+  def type
+    case
+    when file_type.include?("pdf")
+      "pdf"
+    when file_type.include?('x-mobipocket-ebook')
+      "mobi"
+    when file_type.include?('msword')
+      "doc"
+    else
+      "other"
+    end
+  end
 end
