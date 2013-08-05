@@ -13,6 +13,7 @@ gem 'devise'
 gem 'cancan'
 gem 'acts_as_follower'
 gem 'angularjs-rails'
+gem 'settingslogic'
 # attachment
 gem 'carrierwave'
 gem 'mini_magick'
