@@ -15,8 +15,11 @@
 
 FactoryGirl.define do
   factory :attachment do
-    attachmenttable_type "MyString"
+    attachmenttable_type "Resource"
     attachmenttable_id 1
     attachment "book.jpg"
+    file_name "mybook"
+    file_size "10Mb"
+    file_type "application/pdf"
   end
 end

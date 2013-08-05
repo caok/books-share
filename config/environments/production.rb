@@ -66,18 +66,18 @@ BooksShare::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.middleware.use ExceptionNotifier,
-    :sender_address => 'starcloudsip@163.com',
-    :exception_recipients => %w{caok1231@163.com},
+    :sender_address => Settings.mailer.sender_address,
+    :exception_recipients => Settings.mailer.exception_recipients,
     :ignore_exceptions => ExceptionNotifier.default_ignore_exceptions
 
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    :address              => 'smtp.163.com',
-    :port                 => 25,
-    :domain               => '163.com',
-    :user_name            => 'starcloudsip@163.com',
-    :password             => 'xingyun8118',
+    :address              => Settings.smtp.address,
+    :port                 => Settings.smtp.port,
+    :domain               => Settings.smtp.domain,
+    :user_name            => Settings.smtp.user_name,
+    :password             => Settings.smtp.password,
     :authentication       => 'login',
     :enable_starttls_auto => true
   }
