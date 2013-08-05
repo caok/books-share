@@ -18,7 +18,9 @@ vps(ip): http://198.199.86.209:9000
 * pdf2htmlEX
 
 ## development setup
-* rename /config/databse.yml.example to /config/databse.yml
+* rename /config/database.yml.example to /config/database.yml
+* rename /config/application.yml.example to /config/application.yml
+* rake secret
 * sudo apt-get install sphinxsearch (mac: brew install sphinx --mysql )
 * sudo apt-get install nodejs (mac: brew install node)
 * rake db:setup
@@ -35,7 +37,5 @@ vps(ip): http://198.199.86.209:9000
 
 
 ## Changed Log
-06/11/2013 redeploy vps with the avatar uploaded<br/>
-![avatar](https://f.cloud.github.com/assets/83296/636756/de67749a-d28f-11e2-92fd-0311b1a680de.png)
-
-06/14/2013 add read online function<br/>
+* 06/11/2013 redeploy vps with the avatar uploaded<br/>
+* 06/14/2013 add read online function<br/>

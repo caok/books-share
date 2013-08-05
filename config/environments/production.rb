@@ -78,7 +78,7 @@ BooksShare::Application.configure do
     :domain               => Settings.smtp.domain,
     :user_name            => Settings.smtp.user_name,
     :password             => Settings.smtp.password,
-    :authentication       => 'login',
+    :authentication       => Settings.smtp.authentication,
     :enable_starttls_auto => true
   }
 end
