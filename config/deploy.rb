@@ -59,11 +59,13 @@ namespace :deploy do
     #sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
     run "mkdir -p #{shared_path}/config"
     put File.read("config/database.yml.example"), "#{shared_path}/config/database.yml"
+    put File.read("config/application.yml.example"), "#{shared_path}/config/application.yml"
   end
   after "deploy:setup", "deploy:setup_config"
 
   task :symlink_config, roles: :app do
     run "ln -nfs #{shared_path}/config/database.yml  #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/config/application.yml  #{release_path}/config/application.yml"
   end
   after "deploy:finalize_update","deploy:symlink_config"
 end
