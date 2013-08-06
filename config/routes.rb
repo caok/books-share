@@ -33,7 +33,8 @@ BooksShare::Application.routes.draw do
     get 'account' => 'registrations#edit', :as => 'account'
   end
 
-  resources :users, :path => '', :only => [:show]
+  # http://guides.rubyonrails.org/routing.html#specifying-constraints
+  resources :users, :path => '', :only => [:show], constraints: { id: /[^\/]+/ }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
