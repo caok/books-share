@@ -35,8 +35,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :login, :avatar, :avatar_cache
   attr_accessor :login
-  
-  # load carrierwave 
+
+  # load carrierwave
   mount_uploader :avatar, ImageUploader
 
   # assocation
@@ -47,8 +47,8 @@ class User < ActiveRecord::Base
   ##############
   # validation #
   ##############
-  validates :name, presence: true, :uniqueness => true
-  validates :email, :password, presence: true
+  validates :email, :name, presence: true, :uniqueness => true
+  validates :password, presence: true
 
   ######################
   # callback functions #
@@ -78,6 +78,18 @@ class User < ActiveRecord::Base
 
   def any_roles?(*a)
     !(roles & a.map{|i| i.to_s}).empty?
+  end
+
+  class << self
+    def from_auth(auth)
+      User.find_by_name(auth[:info][:nickname]) ||
+       create!(
+            :name => auth[:info][:nickname],
+            :email => auth[:info][:email],
+            :password => 'book-share',
+            :password_confirmation => 'book-share'
+        )
+    end
   end
 
   private

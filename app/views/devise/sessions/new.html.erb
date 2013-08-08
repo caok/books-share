@@ -1,15 +1,17 @@
-<h2><%= t('devise.views.sessions.new.title') %></h2>
 
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-horizontal"}) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :login, :required => false, :placeholder => t('devise.views.sessions.new.login'), :autofocus => true %>
-    <%= f.input :password, :required => false %>
-    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-  </div>
+<div class='sign_in'>
+  <h2><%= t('devise.views.sessions.new.title') %></h2>
 
-  <div class="form-actions">
-    <%= f.button :submit, t('devise.views.sessions.new.submit'), :class => ['btn', 'btn-info'] %>
-  </div>
-<% end %>
+  <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-horizontal"}) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :login, :required => false, :placeholder => t('devise.views.sessions.new.login'), :autofocus => true %>
+      <%= f.input :password, :required => false %>
+      <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+    </div>
 
-<%#= render "devise/shared/links" %>
+    <div class="form-actions">
+      <%= f.button :submit, t('devise.views.sessions.new.submit'), :class => ['btn', 'btn-info'] %>
+       <span><%=t('devise.views.registrations.new.sign_in_with')%></span> <a class='' href='/auth/github'>  <%= image_tag 'github.png'%><a>
+    </div>
+  <% end %>
+</div>

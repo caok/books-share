@@ -1,22 +1,25 @@
-<h2><%= t('devise.views.registrations.new.title') %></h2>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal", :multipart => true }, :validate => true) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :name, :required => true, :autofocus => true %>
-    <label class='string required control-label' for='user_avatar'>头像</label>
-    <div class='controls'>
-      <%= f.file_field :avatar%>
+<div class='sign_up'>
+  <h2>
+    <%= t('devise.views.registrations.new.title') %>
+  </h2>
+
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal", :multipart => true }, :validate => true) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :name, :required => true, :autofocus => true %>
+      <label class='string required control-label' for='user_avatar'>头像</label>
+      <div class='controls'>
+        <%= f.file_field :avatar%>
+      </div>
+      <%= f.hidden_field :avatar_cache%>
+      <%= f.input :email, :required => true %>
+      <%= f.input :password, :required => true %>
+      <%= f.input :password_confirmation, :required => true %>
     </div>
-    <%= f.hidden_field :avatar_cache%>
-    <%= f.input :email, :required => true %>
-    <%= f.input :password, :required => true %>
-    <%= f.input :password_confirmation, :required => true %>
-  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, t('devise.views.registrations.new.submit'), :class => ['btn', 'btn-primary'] %>
-    <a href='/auth/github'> <img src='https://github.global.ssl.fastly.net/images/modules/dashboard/bootcamp/octocat_repo.png?5ad0d940'/><a>
-  </div>
-<% end %>
-
-<%#= render "devise/shared/links" %>
+    <div class="form-actions">
+      <%= f.button :submit, t('devise.views.registrations.new.submit'), :class => ['btn', 'btn-primary'] %>
+       <span><%=t('devise.views.registrations.new.sign_up_with')%></span> <a class='' href='/auth/github'>  <%= image_tag 'github.png'%><a>
+    </div>
+  <% end %>
+</div>

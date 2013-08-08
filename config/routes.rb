@@ -35,6 +35,6 @@ BooksShare::Application.routes.draw do
 
   resources :users, :path => '', :only => [:show]
 
-  match "/auth/:provider/callback", :to => 'sessions#create'
+  get "/auth/:provider/callback", :to => 'sessions#create'
 
 end
