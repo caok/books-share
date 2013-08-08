@@ -8,6 +8,7 @@ defaults: &defaults
     domain               : '163.com'
     user_name            : 'starcloudsip@163.com'
     password             : 'xingyun8118'
+    authentication       : 'login'
 
 development:
   <<: *defaults
