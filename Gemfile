@@ -26,6 +26,8 @@ gem 'thinking-sphinx'
 gem "mini-douban", "~> 0.0.5"
 # create pretty URL
 gem 'friendly_id'
+#sina weibo api
+gem 'weibo_2'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
