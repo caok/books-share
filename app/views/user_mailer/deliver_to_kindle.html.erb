@@ -1,0 +1,7 @@
+<p><%= @user.name %>:</p>
+
+<p>Thank you for using it!</p>
+<p>书名: <%= @resource.try(:attachment).try(:file_name) %></p>
+<p>格式: <%= @resource.try(:attachment).try(:type) %></p>
+<p>大小: <%= number_to_human_size @resource.try(:attachment).try(:file_size) %></p>
+

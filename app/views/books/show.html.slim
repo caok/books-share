@@ -26,7 +26,7 @@
     header
       h1 = @book.name
       p.text-right
-        =link_to @book.try(:user).try(:name), @book.user
+        = link_to @book.try(:user).try(:name), user_path(@book.user) if @book.user
         = "于#{time_ago_in_words @book.created_at}前发布"
 
     .book-detail
@@ -72,10 +72,9 @@
             tr[id='#{dom_id(resource)}']
               td= truncate resource.try(:attachment).try(:file_name)
               td
-                /*b= resource.try(:attachment).try(:file_type)*/
                 b= resource.try(:attachment).try(:type)
               td= number_to_human_size resource.try(:attachment).try(:file_size)
-              / td= link_to t("helpers.links.hyperlink"), resource.download_link, class: "btn btn-mini btn-success", target: "_blank"
+              td= link_to t("helpers.links.hyperlink"), resource.download_link, class: "btn btn-mini btn-success", target: "_blank"
               / - if resource.transformed
               td= link_to t('helpers.links.read'), read_resource_path(resource), class: "btn btn-info btn-mini", target: "_blank" if resource.can_read_online?
               / - else
