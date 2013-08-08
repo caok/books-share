@@ -1,8 +1,8 @@
-source 'https://rubygems.org'
-#source 'http://ruby.taobao.org/'
+# source 'https://rubygems.org'
+source 'http://ruby.taobao.org/'
 
 gem 'rails', '3.2.12'
-gem 'mysql2', "~> 0.3.12b6"
+gem 'mysql2', '0.3.11'
 gem 'slim-rails'
 gem 'kaminari'
 gem 'nokogiri'
@@ -26,6 +26,8 @@ gem 'thinking-sphinx'
 gem "mini-douban", "~> 0.0.5"
 # create pretty URL
 gem 'friendly_id'
+# for github login
+gem 'omniauth-github'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
