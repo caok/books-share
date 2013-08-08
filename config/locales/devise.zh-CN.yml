@@ -95,8 +95,10 @@ zh-CN:
           cancel_account_warning: '删除帐号会删除所有关联的个人资料，并且操作无法恢复'
           cancel_account_confirm: '确认删除帐号吗？'
         new:
-          title: '注册'
-          submit: '注册'
+          title: '创建帐号'
+          submit: '提交'
+          sign_up_with: '第三方注册'
+          sign_in_with: '第三方登录'
       sessions:
         new:
           title: '登录'
