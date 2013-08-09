@@ -19,7 +19,7 @@ class Resource < ActiveRecord::Base
   has_one :attachment, :as => :attachmenttable, :dependent => :destroy
 
   # validation
-  validates :book_id, :presence => true
+  validates :book_id, :file, :presence => true
 
   # instance methods
   def download_link
@@ -39,6 +39,6 @@ class Resource < ActiveRecord::Base
   end
 
   def can_read_online?
-    try(:attachment).type == "pdf"
+    try(:attachment).try(:type) == "pdf"
   end
 end
