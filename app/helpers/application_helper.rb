@@ -58,7 +58,7 @@ module ApplicationHelper
   end
 
   def can_send_to_kindle?(resource, user)
-    user.kindle_email && resource.mobi?
+    user && user.kindle_email && resource.mobi?
   end
 
   MOBILE_USER_AGENTS =  'palm|blackberry|nokia|phone|midp|mobi|symbian|chtml|ericsson|minimo|' +
