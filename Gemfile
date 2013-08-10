@@ -18,6 +18,8 @@ gem 'settingslogic'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'mime-types'
+gem 'carrierwave-qiniu'
+gem 'qiniu-rs'
 # tag
 gem 'acts-as-taggable-on'
 # fulltext search
