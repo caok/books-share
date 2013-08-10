@@ -10,6 +10,7 @@ zh-CN:
         name: "用户名"
         avatar: "头像"
         email: "Email"
+        kindle_email: "kindle邮箱"
         password: "密码"
         roles_mask: "角色"
         grant_permission: "权限"

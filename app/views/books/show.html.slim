@@ -76,7 +76,8 @@
               td= number_to_human_size resource.try(:attachment).try(:file_size)
               td= link_to t("helpers.links.hyperlink"), resource.download_link, class: "btn btn-mini btn-success", target: "_blank"
               / - if resource.transformed
-              td= link_to t('helpers.links.read'), read_resource_path(resource), class: "btn btn-info btn-mini", target: "_blank" if resource.can_read_online?
+              td= link_to t('helpers.links.read'), read_resource_path(resource), class: "btn btn-info btn-mini", target: "_blank" if resource.pdf?
+              td= link_to t('helpers.links.send_to_kindle'), send_to_kindle_resource_path(resource), method: :post, class: "btn btn-danger btn-mini", data: { confirm: t('helpers.links.confirm') } if can_send_to_kindle?(resource, current_user)
               / - else
               /   td= link_to t('helpers.links.transform'), pdf2html_resource_path(resource), method: :put, class: "btn btn-danger btn-mini", data: { confirm: t('helpers.links.confirm') } if can? :pdf2html, resource
               td= link_to '&times;'.html_safe, resource, method: :delete, data: { confirm: t('helpers.links.confirm') }, remote: true, :class => 'close' if can? :destroy, resource

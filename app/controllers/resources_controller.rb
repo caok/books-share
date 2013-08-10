@@ -48,4 +48,10 @@ class ResourcesController < ApplicationController
     @resource = Resource.find(params[:id])
     render layout: false
   end
+
+  def send_to_kindle
+    resource = Resource.find(params[:id])
+    UserMailer.deliver_to_kindle(current_user, resource).deliver
+    redirect_to :back, notice: "The book is sending to #{current_user.kindle_email}"
+  end
 end

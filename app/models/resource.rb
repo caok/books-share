@@ -38,7 +38,11 @@ class Resource < ActiveRecord::Base
     try(:user).try(:name)
   end
 
-  def can_read_online?
+  def pdf?
     try(:attachment).try(:type) == "pdf"
+  end
+
+  def mobi?
+    try(:attachment).try(:type) == "mobi"
   end
 end

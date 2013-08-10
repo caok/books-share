@@ -2,6 +2,7 @@ BooksShare::Application.routes.draw do
   resources :resources do
     put 'pdf2html', :on => :member
     get 'read', :on => :member
+    post 'send_to_kindle', :on => :member
   end
 
   resources :books do

@@ -15,6 +15,7 @@ FactoryGirl.define do
   factory :resource do
     book
     user
+    file "file"
 
     factory :invalid_resource do
       book_id nil

@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   ROLES = %w[admin member]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :login, :avatar, :avatar_cache
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :login, :avatar, :avatar_cache, :kindle_email
   attr_accessor :login
 
   # load carrierwave
@@ -48,7 +48,6 @@ class User < ActiveRecord::Base
   # validation #
   ##############
   validates :email, :name, presence: true, :uniqueness => true
-  validates :password, presence: true
 
   ######################
   # callback functions #
