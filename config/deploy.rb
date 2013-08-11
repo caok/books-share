@@ -1,6 +1,7 @@
 #encoding:utf-8
 require 'bundler/capistrano'
 require 'thinking_sphinx/capistrano'
+require 'delayed/recipes'
 
 set :application, "books-share"
 #set :repository, "git://github.com/caok/books-share.git"
@@ -16,6 +17,7 @@ set :use_sudo, false
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache # 不要每次都获取全新的repository
 set :deploy_server, 'localhost'
+set :rails_env, "production" #added for delayed job
 
 set :bundle_without,  [:development, :test]
 
@@ -78,3 +80,7 @@ namespace :carrierwave do
 end
 
 after 'deploy:update', 'carrierwave:symlink'
+# added for delayed job
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"
