@@ -15,7 +15,7 @@ gem 'acts_as_follower'
 gem 'angularjs-rails'
 gem 'settingslogic'
 # attachment
-gem 'carrierwave'
+gem 'carrierwave', "~> 0.9.0"
 gem 'mini_magick'
 gem 'mime-types'
 # tag
@@ -28,6 +28,8 @@ gem "mini-douban", "~> 0.0.5"
 gem 'friendly_id'
 # for github login
 gem 'omniauth-github'
+# DelayedJob
+gem "delayed_job_active_record", "~> 4.0.0"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
