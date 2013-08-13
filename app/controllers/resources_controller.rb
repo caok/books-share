@@ -51,7 +51,8 @@ class ResourcesController < ApplicationController
 
   def send_to_kindle
     resource = Resource.find(params[:id])
-    UserMailer.deliver_to_kindle(current_user, resource).deliver
+    #UserMailer.deliver_to_kindle(current_user, resource).deliver
+    UserMailer.delay.deliver_to_kindle(current_user, resource)
     redirect_to :back, notice: "The book is sending to #{current_user.kindle_email}"
   end
 end

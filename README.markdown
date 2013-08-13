@@ -27,6 +27,8 @@ vps(ip): http://198.199.86.209:9000
 * rake ts:configure
 * rake ts:index
 * rake ts:start
+* RAILS_ENV=development script/delayed_job start
+
 
 ## install pdf2htmlEx
 * sudo apt-get install software-properties-common
@@ -39,3 +41,4 @@ vps(ip): http://198.199.86.209:9000
 ## Changed Log
 * 06/11/2013 redeploy vps with the avatar uploaded<br/>
 * 06/14/2013 add read online function<br/>
+* 08/12/2013 add delayed_job for sending_to_kindle<br/>
