@@ -1,6 +1,8 @@
 class ResourcesController < ApplicationController
   load_and_authorize_resource
 
+  before_filter :set_book_download_count, :only =>[:read, :send_to_kindle, :download]
+
   def new
     @resource = current_user.resources.new(:book_id => params[:book_id])
 
@@ -54,5 +56,28 @@ class ResourcesController < ApplicationController
     #UserMailer.deliver_to_kindle(current_user, resource).deliver
     UserMailer.delay.deliver_to_kindle(current_user, resource)
     redirect_to :back, notice: "The book is sending to #{current_user.kindle_email}"
+  end
+
+  def download
+    @resource = Resource.find(params[:id])
+    case AttachmentUploader.storage.to_s
+    when 'CarrierWave::Storage::File'
+      send_data( File.read( "#{Rails.root}/public#{@resource.download_link}"),
+          :filename => @resource.download_link.split('/').last.to_s
+      )
+    when 'CarrierWave::Storage::Qiniu'
+      redirect_to @resource.download_link+"?download"
+    else
+      redirect_to @resource.download_link
+    end
+  end
+
+  protected
+
+  def set_book_download_count
+    book = @resource.book
+    return unless book
+    book.download_count += 1
+    book.save!
   end
 end

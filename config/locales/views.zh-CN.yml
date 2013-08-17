@@ -21,6 +21,7 @@ zh-CN:
           error: '该书已经被创建，不能再次创建。'
           douban_error: '没有对应的豆瓣书籍。'
 
+
   helpers:
     actions: "操作"
     hints:
@@ -37,7 +38,7 @@ zh-CN:
       detail: "详情"
       all: "所有"
       more: "更多..."
-      hyperlink: "链接"
+      hyperlink: "下载"
       read: "阅读"
       transform: "转化"
       grant_permission: "授予权限"

@@ -18,6 +18,11 @@ zh-CN:
       state:
         false: "收藏"
         true: "已收藏"
+    books:
+      index:
+        top_download: "最多下载"
+        last_upload: "最新创建"
+        need_resource: "待补电子书"
 
   layout:
     holder: "Caok"

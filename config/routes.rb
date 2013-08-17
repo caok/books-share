@@ -1,8 +1,11 @@
 BooksShare::Application.routes.draw do
-  resources :resources do
-    put 'pdf2html', :on => :member
-    get 'read', :on => :member
-    post 'send_to_kindle', :on => :member
+  resources :resources, :except => [:index] do
+    member do
+      put 'pdf2html'
+      get 'read'
+      get 'download'
+      post 'send_to_kindle'
+    end
   end
 
   resources :books do

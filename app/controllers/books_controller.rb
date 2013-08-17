@@ -20,7 +20,9 @@ class BooksController < ApplicationController
         }
       @books = Book.search sphinx_escape(params[:q]), search_options
     else
-      @books = Book.all
+      @top_download_books = Book.had_resource_books.top_download.limit(10)
+      @last_upload_books = Book.had_resource_books.order_by_created_at.limit(10)
+      @need_resource_books = Book.need_resource_books.order_by_created_at.limit(10)
     end
 
     respond_to do |format|

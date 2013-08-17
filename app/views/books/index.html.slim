@@ -1,8 +1,32 @@
-ul.thumbnails
-  - @books.each do |book|
-    li.book-each.span2
-      .thumbnail
-        a{href="#{book_path(book)}"}
-          = image_tag(book.cover_url)
-        .desc
-          = strip_tags(book.name).truncate(15, omission: '...')
+- if @top_download_books
+  ul.thumbnails.top_download
+    h2=t("views.books.index.top_download")
+    - @top_download_books.each do |book|
+      li.book-each.span2
+        .thumbnail
+          a{href="#{book_path(book)}"}
+            = image_tag(book.cover_url.to_s)
+          .desc
+            = strip_tags(book.name).truncate(15, omission: '...')
+- if @last_upload_books
+  ul.thumbnails.last_upload
+    h2=t("views.books.index.last_upload")
+    - @last_upload_books.each do |book|
+      li.book-each.span2
+        .thumbnail
+          a{href="#{book_path(book)}"}
+            = image_tag(book.cover_url.to_s)
+          .desc
+            = strip_tags(book.name).truncate(15, omission: '...')
+- if @need_resource_books
+  ul.thumbnails.top_lownload
+    h2=t("views.books.index.need_resource")
+    - @need_resource_books.each do |book|
+      li.book-each.span2
+        .thumbnail
+          a{href="#{book_path(book)}"}
+            = image_tag(book.cover_url.to_s)
+          .desc
+            = strip_tags(book.name).truncate(15, omission: '...')
+
+
