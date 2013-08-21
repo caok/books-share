@@ -23,6 +23,14 @@ zh-CN:
         top_download: "最多下载"
         last_upload: "最新创建"
         need_resource: "待补电子书"
+        more: '更多...'
+  controller:
+    books:
+      index:
+        top_download: "下载排行榜"
+        last_upload: "最新创建"
+        need_resource: "待补电子书"
+
 
   layout:
     holder: "Caok"

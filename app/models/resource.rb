@@ -21,6 +21,9 @@ class Resource < ActiveRecord::Base
   # validation
   validates :book_id, :file, :presence => true
 
+  after_create :book_resource_count_add
+  after_destroy :book_resource_count_reduce
+
   # instance methods
   def download_link
     try(:attachment).try(:attachment).try(:url) || ''
@@ -44,5 +47,18 @@ class Resource < ActiveRecord::Base
 
   def mobi?
     try(:attachment).try(:type) == "mobi"
+  end
+
+  protected
+  def book_resource_count_add
+    self.book.resource_count += 1
+    self.book.save!
+  end
+
+  def book_resource_count_reduce
+    if self.book.resource_count > 0
+      self.book.resource_count -= 1
+      self.book.save!
+    end
   end
 end

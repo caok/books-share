@@ -62,7 +62,7 @@ class ResourcesController < ApplicationController
     @resource = Resource.find(params[:id])
     case AttachmentUploader.storage.to_s
     when 'CarrierWave::Storage::File'
-      send_data( File.read( "#{Rails.root}/public#{@resource.download_link}"),
+      send_data( File.read( "#{Rails.root}/public#{ URI.decode @resource.download_link}"),
           :filename => @resource.download_link.split('/').last.to_s
       )
     when 'CarrierWave::Storage::Qiniu'
