@@ -13,7 +13,8 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  storage Rails.env.production?? :qiniu : :file
+  # storage :qiniu
   # storage :fog
 
   # Override the directory where uploaded files will be stored.

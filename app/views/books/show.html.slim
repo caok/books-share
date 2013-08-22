@@ -74,7 +74,7 @@
               td
                 b= resource.try(:attachment).try(:type)
               td= number_to_human_size resource.try(:attachment).try(:file_size)
-              td= link_to t("helpers.links.hyperlink"), resource.download_link, class: "btn btn-mini btn-success", target: "_blank"
+              td= link_to t("helpers.links.hyperlink"), download_resource_path(resource), class: "btn btn-mini btn-success", target: "_blank"
               / - if resource.transformed
               td= link_to t('helpers.links.read'), read_resource_path(resource), class: "btn btn-info btn-mini", target: "_blank" if resource.pdf?
               td= link_to t('helpers.links.send_to_kindle'), send_to_kindle_resource_path(resource), method: :post, class: "btn btn-danger btn-mini", data: { confirm: t('helpers.links.confirm') } if can_send_to_kindle?(resource, current_user)

@@ -16,13 +16,15 @@
 #tag_cloud {
   width: auto;
   line-height: 2.0em;
+  float: left;
 
   > a {
     padding: 5px;
+    float: left;
     //text-decoration: none;
   }
   a.s {
-    font-size: 0.8em;
+    font-size: 0.9em;
     color: rgb(208, 222, 211);
   }
   a.m {
@@ -30,11 +32,11 @@
     color: rgb(215, 190, 188);
   }
   a.l {
-    font-size: 1.8em;
+    font-size: 1.5em;
     color: rgb(232, 111, 129);
   }
   a.h {
-    font-size: 2.2em;
+    font-size: 1.8em;
     color: rgb(245, 47, 82);
   }
 }

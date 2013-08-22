@@ -34,6 +34,13 @@ class Book < ActiveRecord::Base
   validates :name, :content, :tag_list, :presence => true
   validates :cover, :presence => true, :unless => :name
 
+  scope :need_resource_books, -> { where(resource_count: 0) }
+  scope :had_resource_books, -> { where('resource_count > 0') }
+  scope :new_created, -> { where(download_count: 0)}
+
+  scope :top_download, -> { order('download_count desc, created_at desc').where('download_count > 0') }
+  scope :order_by_created_at, -> { order('created_at desc') }
+
   # instance methods
   def cover_url
     attachment.try(:attachment).try(:url) || douban_img

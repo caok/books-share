@@ -1,0 +1,6 @@
+li.book-each.span2
+	.thumbnail
+	  a{href="#{book_path(book)}"}
+	    = image_tag(book.cover_url.to_s)
+	  .desc
+	    = strip_tags(book.name).truncate(15, omission: '...')
