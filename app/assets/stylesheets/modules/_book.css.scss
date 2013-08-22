@@ -59,6 +59,7 @@ a { cursor: pointer; }
     border: none;
     //box-shadow: none;
     //width: 140px;
+    margin-right: 10px;
 
     img {
       width: 120px;
@@ -81,5 +82,18 @@ a { cursor: pointer; }
     //&:hover .op {
       //opacity: 1;
     //}
+  }
+}
+
+
+.books {
+  h2{
+    margin-left: 20px;
+    font-size: 22px;
+    .more{
+      text-decoration: none;
+      margin-left: 5px;
+      font-size: 0.5em;
+    }
   }
 }

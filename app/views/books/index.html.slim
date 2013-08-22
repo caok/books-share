@@ -1,8 +1,29 @@
-ul.thumbnails
-  - @books.each do |book|
-    li.book-each.span2
-      .thumbnail
-        a{href="#{book_path(book)}"}
-          = image_tag(book.cover_url)
-        .desc
-          = strip_tags(book.name).truncate(15, omission: '...')
+#tag_cloud
+  - tag_cloud Book.tag_counts, %w{s m l h} do |tag, css_class|
+    = link_to tag.name, tag_path(tag.name), class: css_class
+  = link_to t("views.books.index.more"), tag_cloud_path
+
+- if @books && @books.any?
+  ul.thumbnails.books
+    h2
+      =@message
+    = render partial: "books/book_item", collection: @books, as: :book
+- if @top_download_books && @top_download_books.any?
+  ul.thumbnails.books.top_download
+    h2
+      =t("views.books.index.top_download")
+      a.more href=books_path(:top_download=>true) =t("views.books.index.more")
+    = render partial: "books/book_item", collection: @top_download_books, as: :book
+- if @last_upload_books && @last_upload_books.any?
+  ul.thumbnails.books.last_upload
+    h2
+      =t("views.books.index.last_upload")
+      a.more href=books_path(:last_upload=>true) =t("views.books.index.more")
+    = render partial: "books/book_item", collection: @last_upload_books, as: :book
+- if @need_resource_books && @need_resource_books.any?
+  ul.thumbnails.books.top_lownload
+    h2
+      =t("views.books.index.need_resource")
+      a.more href=books_path(:need_resource=>true) =t("views.books.index.more")
+    = render partial: "books/book_item", collection: @need_resource_books, as: :book
+

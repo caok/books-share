@@ -19,8 +19,20 @@ class BooksController < ApplicationController
           :sort_mode => :desc
         }
       @books = Book.search sphinx_escape(params[:q]), search_options
+    when params[:top_download]
+      @message = t("controller.books.index.top_download")
+      @books = Book.had_resource_books.top_download.page(params[:page])
+    when params[:last_upload]
+      @message = t("controller.books.index.last_upload")
+      @books = Book.had_resource_books.order_by_created_at.page(params[:page])
+    when params[:need_resource]
+      @message = t("controller.books.index.need_resource")
+      @books = Book.need_resource_books.order_by_created_at.page(params[:page])
     else
-      @books = Book.all
+      @books = nil  
+      @last_upload_books = Book.had_resource_books.new_created.order_by_created_at.limit(10)
+      @top_download_books = Book.had_resource_books.top_download.limit(10)
+      @need_resource_books = Book.need_resource_books.order_by_created_at.limit(10)
     end
 
     respond_to do |format|

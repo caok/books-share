@@ -17,8 +17,8 @@ class Ability
 
   def member_rules
     can :read, :all
-    can :create, [Book, Resource]
-    can [:auto_create, :auto_new, :follow, :unfollow], Book
+    can [:create, :download], Resource
+    can [:auto_create, :auto_new, :follow, :unfollow, :create], Book
     can :manage, Attachment
     can [:update, :destroy], Book do |book|
       book.user_id == @user.id

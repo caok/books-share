@@ -33,3 +33,4 @@
 dump.rdb
 #config/initializers/secret_token.rb
 config/application.yml
+config/initializers/carrierwave.rb

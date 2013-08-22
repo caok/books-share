@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130810141820) do
+ActiveRecord::Schema.define(:version => 20130821153122) do
 
   create_table "attachments", :force => true do |t|
     t.string  "attachmenttable_type"
@@ -33,8 +33,12 @@ ActiveRecord::Schema.define(:version => 20130810141820) do
     t.integer  "user_id"
     t.string   "douban_img"
     t.boolean  "auto_create",      :default => false
+    t.integer  "download_count",   :default => 0
+    t.integer  "resource_count",   :default => 0
   end
 
+  add_index "books", ["download_count"], :name => "index_books_on_download_count"
+  add_index "books", ["resource_count"], :name => "index_books_on_resource_count"
   add_index "books", ["user_id"], :name => "index_books_on_user_id"
 
   create_table "delayed_jobs", :force => true do |t|

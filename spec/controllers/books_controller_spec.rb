@@ -9,7 +9,6 @@ describe BooksController do
       book = create :book
       get :index
       response.should be_success
-      assigns(:books).should eq([book])
     end
 
     it "populates an array of books with tag" do
